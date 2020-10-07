@@ -1,41 +1,23 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Quiz</title>
+{% block title %}Quiz{% endblock %}
+{% block nav_quiz %}active{% endblock %}
 
-    <link rel="stylesheet" href="./styles.css">
-</head>
-
-<body>
-<h1>This is our Quiz</h1>
-
-<ul>
-    <li><a href="/">Home</a></li>
-    <li class="active"><a href="/quiz">Quiz</a></li>
-    <li><a href="/data">Data</a></li>
-</ul>
-
-
+{% block content %}
 <form name="quiz" method="post">
 
 <h3>Question 1</h3>
-<input type="radio" id="1" name="1" value="a"> Answer 1 <br>
-<input type="radio" id="1" name="1" value="b"> Answer 2 <br>
-<input type="radio" id="1" name="1" value="c"> Answer 3 <br>
-<input type="radio" id="1" name="1" value="c"> Answer 4 <br>
+<input type="radio" name="1" value="a"> Answer 1 <br>
+<input type="radio" name="1" value="b"> Answer 2 <br>
+<input type="radio" name="1" value="c"> Answer 3 <br>
+<input type="radio" name="1" value="d"> Answer 4 <br>
 
 <h3>Question 2</h3>
-<input type="radio" id="2" name="2" value="a"> Answer 1 <br>
-<input type="radio" id="2" name="2" value="b"> Answer 2 <br>
-<input type="radio" id="2" name="2" value="c"> Answer 3 <br>
-<input type="radio" id="2" name="2" value="c"> Answer 4 <br>
+<input type="radio" name="2" value="a"> Answer 1 <br>
+<input type="radio" name="2" value="b"> Answer 2 <br>
+<input type="radio" name="2" value="c"> Answer 3 <br>
+<input type="radio" name="2" value="d"> Answer 4 <br>
 
 <button onclick="return handleClick();" type="submit">Submit</button>
 </form>
-
-
-
-
-</body>
-</html>
+{% endblock %}

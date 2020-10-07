@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" type="text/css">
+</head>
+    
+<body>
+<h1>Quiz Time</h1>
+
+<nav>
+    <ul>
+        <li><a href="/" class="{% block nav_index %}{% endblock %}">Home</a></li>
+        <li><a href="/quiz" class="{% block nav_quiz %}{% endblock %}">Quiz</a></li>
+        <li><a href="/data" class="{% block nav_data %}{% endblock %}">Data</a></li>
+    </ul>    
+</nav>
+
+{% block content %}{% endblock %}
+
+
+<div class="footer">Made by Team</div>
+</body>
+
+</html>

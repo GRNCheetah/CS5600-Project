@@ -1,17 +1,8 @@
-<html>
+{% extends 'base.html' %}
 
-<h1>This is the Data Page</h1>
+{% block title %}Data{% endblock %}
+{% block nav_data %}active{% endblock %}
 
-
-<li>
-    <a href="/"><ul>Home</ul></a>
-    <a href="/quiz"><ul>Quiz</ul></a>
-    <a href="/data"><ul>Data</ul></a>
-</li>
-
-
-
-
-
-
-</html>
+{% block content %}
+<p>This is where we need to show data to user, and allow them to interact with it.</p>
+{% endblock %}
