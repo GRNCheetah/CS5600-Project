@@ -1,17 +1,9 @@
-<html>
+{% extends 'base.html' %}
 
-<h1>Welcome to our Quiz</h1>
-
-
-<li>
-    <a href="/"><ul>Home</ul></a>
-    <a href="/quiz"><ul>Quiz</ul></a>
-    <a href="/data"><ul>Data</ul></a>
-</li>
+{% block title %}Home{% endblock %}
 
 
+{% block content %}
+<p>This is the body of the first page. We should put descriptions and instructions here.</p>
 
-
-
-
-</html>
+{% endblock %}
