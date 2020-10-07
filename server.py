@@ -1,14 +1,26 @@
-from flask import Blueprint, Flask, render_template
-
+from flask import Blueprint, Flask, render_template, request
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
-@app.route("/quiz")
+@app.route("/quiz", methods=["GET", "POST"])
 def quiz():
-    return render_template("quiz.html")
+    try:
+        if request.method == "POST":
+            # Do calcs on answers starting here
+            answer1 = request.form['1']
+            print(answer1)
+        return render_template("quiz.html")
+    except Exception as e:
+        print("error")
+        return render_template("quiz.html", error="something")
+
+
+        
+
+    
 
 @app.route("/data")
 def data():
