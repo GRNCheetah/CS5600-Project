@@ -16,3 +16,15 @@ In the Docker application, a you should now see **project-web-server** under 'Co
 With the `--publish` flag, TCP port 80 in the container is mapped to port 8080 on the Docker host. Visit http://localhost:8080 to see the web server.
 
 The container can be stopped with the `docker stop project-web-server` command and removed with the `docker rm project-web-server` command.
+
+## Running the Flask Application
+
+Install `flask` if necessary:
+
+`$ pip install flask`
+
+Simply run the application from the command line:
+
+`$ python server.py`
+
+Navigate to `localhost:5000` in your browser to view the application
