@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS submission;
+
+CREATE TABLE submission (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  answers
+);
