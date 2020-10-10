@@ -4,19 +4,88 @@
 {% block nav_quiz %}active{% endblock %}
 
 {% block content %}
-<form name="quiz" method="post">
+<form name="quiz" method="POST">
 
-<h3>Question 1</h3>
-<input type="radio" name="1" value="a"> Answer 1 <br>
-<input type="radio" name="1" value="b"> Answer 2 <br>
-<input type="radio" name="1" value="c"> Answer 3 <br>
-<input type="radio" name="1" value="d"> Answer 4 <br>
+<h3>When you go somewhere for the day, would you rather</h3>
+<input type="radio" name="1" value="J2"> Plan what you will do and when, or <br>
+<input type="radio" name="1" value="P2"> Just go! <br>
 
-<h3>Question 2</h3>
-<input type="radio" name="2" value="a"> Answer 1 <br>
-<input type="radio" name="2" value="b"> Answer 2 <br>
-<input type="radio" name="2" value="c"> Answer 3 <br>
-<input type="radio" name="2" value="d"> Answer 4 <br>
+<h3>If you were a teacher, would you rather teach</h3>
+<input type="radio" name="2" value="S2"> Facts-based courses, or <br>
+<input type="radio" name="2" value="N2"> Courses involving opinion or theory? <br>
+
+<h3>Are you usually</h3>
+<input type="radio" name="3" value="E2"> A "good mixer" with groups of people, or <br>
+<input type="radio" name="3" value="I2"> Rather quiet and reserved? <br>
+
+<h3>Do you more often let</h3>
+<input type="radio" name="4" value="F1"> Your heart rule your head, or <br>
+<input type="radio" name="4" value="T2"> Your head rule your heart? <br>
+
+<h3>In doing something that many other people would do, would you rather </h3>
+<input type="radio" name="5" value="N1"> Invent a way of your own, or <br>
+<input type="radio" name="5" value="S1"> Do it in the accepted way? <br>
+
+<h3>Among your friends are you </h3>
+<input type="radio" name="6" value="E2"> Full of news about everybody, or <br>
+<input type="radio" name="6" value="I1"> One of the last to hear what is going on? <br>
+
+<h3>Does the idea of making a list of what you should get done over a weekend </h3>
+<input type="radio" name="7" value="J1"> Help you, or <br>
+<input type="radio" name="7" value="P1"> Stress you, or <br>
+<input type="radio" name="7" value="P1"> Positively depress you? <br>
+
+<h3>When you have a special job to do, do you like to </h3>
+<input type="radio" name="8" value="J1"> Organize it carefully before you start, or  <br>
+<input type="radio" name="8" value="P2"> Find out what is necessary as you go along? <br>
+
+<h3>Do you tend to have</h3>
+<input type="radio" name="9" value="E2"> Broad friendships with many different people, or <br>
+<input type="radio" name="9" value="I1"> Deep friendships with very few people? <br>
+
+<h3>Do you admire more the people who are </h3>
+<input type="radio" name="10" value="S1"> Normal-acting to never make themselves the center of attention, or<br>
+<input type="radio" name="10" value="N2"> Too original and individual to care whether they are the center of attention or not? <br>
+
+<h3>Do you prefer to</h3>
+<input type="radio" name="11" value="J2"> Arrange parties well in advance, or<br>
+<input type="radio" name="11" value="P1"> Be free to do whatever looks like fun when the time comes?<br>
+
+<h3>Do you usually get along better with</h3>
+<input type="radio" name="12" value="S1"> Realistic people, or<br>
+<input type="radio" name="12" value="N2"> Imaginative people?<br>
+
+<h3>When you are with a groupe of people, would you usually rather</h3>
+<input type="radio" name="13" value="E1"> Join in the talk of the group or<br>
+<input type="radio" name="13" value="I2"> Stand back and listen first?<br>
+
+<h3>Is it a higher compliment to be called</h3>
+<input type="radio" name="14" value="F1">A person of real feeling, or<br>
+<input type="radio" name="14" value="T2"> A consistently reasonable person?<br>
+
+<h3>In reading for pleasure, do you</h3>
+<input type="radio" name="15" value="N0"> Enjoy odd or original ways of saying things, or<br>
+<input type="radio" name="15" value="S1"> Like writers to say exactly what they mean?<br>
+
+<h3>Do you</h3>
+<input type="radio" name="16" value="E2"> Talk easily to almost anyone for as long as you have to, or<br>
+<input type="radio" name="16" value="I2"> Find a lot to say only to certain people or under certain conditions?<br>
+
+<h3>Does following a schedule</h3>
+<input type="radio" name="17" value="J2"> Appeal to you, or<br>
+<input type="radio" name="17" value="P2"> Cramp you?<br>
+
+<h3>When it is settled well in advance that you will do a certain thing at a certain time, do you find it</h3>
+<input type="radio" name="18" value="J1"> Nice to be able to plan accordingly, or<br>
+<input type="radio" name="18" value="P1"> A little unpleasant to be tied down?<br>
+
+<h3>Are you more successful</h3>
+<input type="radio" name="19" value="J1"> At following a carefully worked out plan, or<br>
+<input type="radio" name="19" value="P1"> At dealing with the unexpected and seeing what quickly should be done?<br>
+
+<h3>Sould you rather be considered</h3>
+<input type="radio" name="20" value="S2"> A practical person, or<br>
+<input type="radio" name="20" value="N2"> An out-of-the-box-thinking person?<br>
 
 <button onclick="return handleClick();" type="submit">Submit</button>
 </form>
