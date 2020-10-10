@@ -5,4 +5,11 @@
 
 {% block content %}
 <p>This is where we need to show data to user, and allow them to interact with it.</p>
+    {% for post in posts %}
+    <a href="#">
+        <h2>{{ post['id'] }}</h2>
+    </a>
+    <p>{{ post['answers'] }}</p>
+    <hr>
+    {% endfor %}
 {% endblock %}

@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS submission;
+DROP TABLE IF EXISTS submissions;
 
-CREATE TABLE submission (
+CREATE TABLE submissions (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  answers
+  answers TEXT NOT NULL
 );

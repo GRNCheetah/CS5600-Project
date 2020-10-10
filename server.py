@@ -1,7 +1,13 @@
 from flask import Blueprint, Flask, render_template, request
+import sqlite3
 app = Flask(__name__)
 
 NUM_QUESTIONS = 26
+
+def get_db_connection():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.route("/")
 def home():
@@ -33,7 +39,10 @@ def quiz():
 
 @app.route("/data")
 def data():
-    return render_template("data.html")
+    conn = get_db_connection()
+    posts = conn.execute('SELECT * FROM submissions').fetchall()
+    conn.close()
+    return render_template("data.html", posts=posts)
 
 if __name__ == '__main__':
     app.run(debug=True)
