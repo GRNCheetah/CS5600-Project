@@ -8,13 +8,5 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("INSERT INTO submissions (id, answers) VALUES (?, ?)",
-            ('1', 'blah blah content')
-            )
-
-cur.execute("INSERT INTO submissions (id, answers) VALUES (?, ?)",
-            ('3', '[\'J2\', \'P0\']')
-            )
-
 connection.commit()
 connection.close()

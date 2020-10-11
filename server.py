@@ -17,8 +17,6 @@ def home():
 def quiz():
     try:
         if request.method == "POST":
-            print("question 25: ", request.form.getlist(str(25)), flush=True)
-
             # Do calcs on answers starting here
             answers = []
             for answer in range (1, NUM_QUESTIONS+1):
@@ -27,10 +25,39 @@ def quiz():
                 else:
                     answers.append(request.form[str(answer)])
             print(answers, flush=True)
+
+            # Calculate sums for each trait
+            sumE = 0
+            sumI = 0
+            sumS = 0
+            sumN = 0
+            sumT = 0
+            sumF = 0
+            sumJ = 0
+            sumP = 0
+            for answer in answers:
+                if answer[0] == 'E':
+                    sumE += int(answer[-1])
+                elif answer[0] == 'I':
+                    sumI += int(answer[-1])
+                elif answer[0] == 'S':
+                    sumS += int(answer[-1])
+                elif answer[0] == 'N':
+                    sumN += int(answer[-1])
+                elif answer[0] == 'T':
+                    sumT += int(answer[-1])
+                elif answer[0] == 'F':
+                    sumF += int(answer[-1])
+                elif answer[0] == 'J':
+                    sumJ += int(answer[-1])
+                elif answer[0] == 'P':
+                    sumP += int(answer[-1])
+            print('Sums are: ', sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, flush=True)
+
             # Send to database
             conn = get_db_connection()
-            conn.execute('INSERT INTO submissions (id, answers) VALUES (?, ?)',
-                         ('6', 'yay!'))
+            conn.execute("INSERT INTO submissions (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                        (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP))
             conn.commit()
             conn.close()
         return render_template("quiz.html")
