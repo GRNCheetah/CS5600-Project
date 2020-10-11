@@ -1,4 +1,4 @@
-from flask import Blueprint, Flask, render_template, request
+from flask import Blueprint, Flask, render_template, request, url_for
 import sqlite3
 app = Flask(__name__)
 
@@ -27,6 +27,12 @@ def quiz():
                 else:
                     answers.append(request.form[str(answer)])
             print(answers, flush=True)
+            # Send to database
+            conn = get_db_connection()
+            conn.execute('INSERT INTO submissions (id, answers) VALUES (?, ?)',
+                         ('6', 'yay!'))
+            conn.commit()
+            conn.close()
         return render_template("quiz.html")
     except Exception as e:
         print("error")
