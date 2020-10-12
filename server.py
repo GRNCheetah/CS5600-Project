@@ -1,7 +1,7 @@
 from flask import Blueprint, Flask, render_template, request
 app = Flask(__name__)
 
-NUM_QUESTIONS = 26
+NUM_QUESTIONS = 50
 
 @app.route("/")
 def home():
