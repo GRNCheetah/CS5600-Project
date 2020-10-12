@@ -11,8 +11,6 @@ def home():
 def quiz():
     try:
         if request.method == "POST":
-            print("question 25: ", request.form.getlist(str(25)), flush=True)
-
             # Do calcs on answers starting here
             answers = []
             for answer in range (1, NUM_QUESTIONS+1):
