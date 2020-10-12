@@ -1,6 +1,8 @@
 from flask import Blueprint, Flask, render_template, request
 app = Flask(__name__)
 
+NUM_QUESTIONS = 50
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -10,8 +12,13 @@ def quiz():
     try:
         if request.method == "POST":
             # Do calcs on answers starting here
-            answer1 = request.form['1']
-            print(answer1)
+            answers = []
+            for answer in range (1, NUM_QUESTIONS+1):
+                if answer==25:
+                    answers = answers + (request.form.getlist(str(answer)))
+                else:
+                    answers.append(request.form[str(answer)])
+            print(answers, flush=True)
         return render_template("quiz.html")
     except Exception as e:
         print("error")
