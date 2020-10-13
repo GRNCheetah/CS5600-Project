@@ -9,5 +9,6 @@ CREATE TABLE submissions (
   sumT INTEGER NOT NULL,
   sumF INTEGER NOT NULL,
   sumJ INTEGER NOT NULL,
-  sumP INTEGER NOT NULL
+  sumP INTEGER NOT NULL,
+  personalityType TEXT
 );

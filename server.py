@@ -54,10 +54,28 @@ def quiz():
                     sumP += int(answer[-1])
             print('Sums are: ', sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, flush=True)
 
+            personalityType = ""
+            if(sumI >= sumE):
+                personalityType += "I"
+            else:
+                personalityType += "E"
+            if(sumN >= sumS):
+                personalityType += "N"
+            else:
+                personalityType += "S"
+            if(sumT >= sumF):
+                personalityType += "T"
+            else:
+                personalityType += "F"
+            if(sumP >= sumJ):
+                personalityType += "P"
+            else:
+                personalityType += "J"
+
             # Send to database
             conn = get_db_connection()
-            conn.execute("INSERT INTO submissions (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                        (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP))
+            conn.execute("INSERT INTO submissions (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                        (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType))
             conn.commit()
             conn.close()
         return render_template("quiz.html")
