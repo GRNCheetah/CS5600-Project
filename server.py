@@ -1,4 +1,4 @@
-from flask import Blueprint, Flask, render_template, request, url_for
+from flask import Blueprint, Flask, render_template, request
 import sqlite3
 app = Flask(__name__)
 
