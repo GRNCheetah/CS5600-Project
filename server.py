@@ -27,66 +27,71 @@ def quiz():
             print(answers, flush=True)
 
             # Calculate sums for each trait
-            sumE = 0
-            sumI = 0
-            sumS = 0
-            sumN = 0
-            sumT = 0
-            sumF = 0
-            sumJ = 0
-            sumP = 0
+            result = {
+                "sumE": 0,
+                "sumI": 0,
+                "sumS": 0,
+                "sumN": 0,
+                "sumT": 0,
+                "sumF": 0,
+                "sumJ": 0,
+                "sumP": 0,
+                "personalityType": ""
+            }
             for answer in answers:
                 if answer[0] == 'E':
-                    sumE += int(answer[-1])
+                    result["sumE"] += int(answer[-1])
                 elif answer[0] == 'I':
-                    sumI += int(answer[-1])
+                    result["sumI"] += int(answer[-1])
                 elif answer[0] == 'S':
-                    sumS += int(answer[-1])
+                    result["sumS"] += int(answer[-1])
                 elif answer[0] == 'N':
-                    sumN += int(answer[-1])
+                    result["sumN"] += int(answer[-1])
                 elif answer[0] == 'T':
-                    sumT += int(answer[-1])
+                    result["sumT"] += int(answer[-1])
                 elif answer[0] == 'F':
-                    sumF += int(answer[-1])
+                    result["sumF"] += int(answer[-1])
                 elif answer[0] == 'J':
-                    sumJ += int(answer[-1])
+                    result["sumJ"] += int(answer[-1])
                 elif answer[0] == 'P':
-                    sumP += int(answer[-1])
-            print('Sums are: ', sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, flush=True)
+                    result["sumP"] += int(answer[-1])
+            #print('Sums are: ', sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, flush=True)
 
-            personalityType = ""
-            if(sumI >= sumE):
-                personalityType += "I"
+
+            if(result["sumI"] >= result["sumE"]):
+                result["personalityType"] += "I"
             else:
-                personalityType += "E"
-            if(sumN >= sumS):
-                personalityType += "N"
+                result["personalityType"] += "E"
+            if(result["sumN"] >= result["sumS"]):
+                result["personalityType"] += "N"
             else:
-                personalityType += "S"
-            if(sumT >= sumF):
-                personalityType += "T"
+                result["personalityType"] += "S"
+            if(result["sumT"] >= result["sumF"]):
+                result["personalityType"] += "T"
             else:
-                personalityType += "F"
-            if(sumP >= sumJ):
-                personalityType += "P"
+                result["personalityType"] += "F"
+            if(result["sumP"] >= result["sumJ"]):
+                result["personalityType"] += "P"
             else:
-                personalityType += "J"
+                result["personalityType"] += "J"
 
             # Send to database
             conn = get_db_connection()
             conn.execute("INSERT INTO submissions (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType))
+                        (result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
             conn.commit()
             conn.close()
-        return render_template("quiz.html")
+            return render_template("results.html", user_result=result)
+        else:
+            return render_template("quiz.html")
     except Exception as e:
-        print("error")
+        print("error:", e)
         return render_template("quiz.html", error="something")
 
+@app.route("/results")
+def results(data=None):
+    return render_template("results.html", user_result={})
 
-        
-
-    
 
 @app.route("/data")
 def data():
