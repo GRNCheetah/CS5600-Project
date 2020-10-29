@@ -1,7 +1,7 @@
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from flask import Blueprint, Flask, render_template, request
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # Secret key of random bytes (used for sessions and user login implementation)
