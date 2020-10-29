@@ -1,6 +1,65 @@
-from flask import Blueprint, Flask, render_template, request
 import sqlite3
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask import Blueprint, Flask, render_template, request
 app = Flask(__name__)
+
+# Secret key of random bytes (used for sessions and user login implementation)
+# app.secret_key = b'\x15\xbe\x9bW\x80\xa1\x8d\xe0\x907\x08D\xfbr\x81\xf7'
+
+# Flask SQL Alchemy Setup
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SECRET_KEY'] = 'secretkey'
+db = SQLAlchemy(app)
+
+# Initialize Login Manager
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+class User(UserMixin, db.Model):
+    '''
+    Class to represent the users table in users.db
+    2 Attributes, an id (primary key) and a username
+    '''
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(30), unique=True)
+
+
+@login_manager.user_loader
+def load_user(userid: int):
+    return User.query.get(userid)
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+
+    print(current_user)
+
+    if request.method == "POST":
+        print(request.form.get("username"))
+        user = User.query.filter_by(username=request.form.get("username")).first()
+        login_user(user)
+
+        return render_template("login.html", user=current_user)
+
+    return render_template("login.html", user=current_user)
+
+
+# TODO: Add actual logout page
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return "You are now logged out"
+
+# TODO: Remove at some point, just a test page for the moment
+@app.route('/tmp')
+@login_required
+def tmp():
+    return "The current user is " + current_user.username
+
 
 NUM_QUESTIONS = 50
 
