@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
-{% block nav_login %}active{% endblock %}
+{% block title %}New User{% endblock %}
+{% block nav_new_user %}active{% endblock %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
 
 <h3> {{ error }} </h3>
 
-<form name="login" method="POST">
+<form name="new_user" method="POST">
 
   <h3>Username</h3>
   <input name="username" type="text" required><br><br>
@@ -23,8 +23,6 @@
 
 </form>
 
-<li><a href="/new_user" class="{% block nav_new_user %}{% endblock %}">Need an account?</a></li>
-
 {% endif %}
 
-{% endblock content %}
+{% endblock %}

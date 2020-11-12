@@ -1,3 +1,5 @@
+import os
+import hashlib
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -17,7 +19,6 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-# TODO: add password field with hash function and things
 class User(UserMixin, db.Model):
     '''
     Class to represent the users table in users.db
@@ -26,6 +27,25 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True)
+    password = db.Column(db.String(32))
+    salt = db.Column(db.Integer)
+
+
+@app.route("/new_user", methods=["GET", "POST"])
+def new_user():
+    if request.method == "POST":
+        print("HELLO")
+        # Create new user
+        # Generate salt for storing passwords in the database
+        uname = request.form.get("username")
+        salt = os.urandom(32)
+        hash_pass = hashlib.pbkdf2_hmac('sha256', request.form.get("password").encode('utf-8'), salt, 100000)
+        db.session.add(User(username=uname, password=hash_pass, salt=salt))
+        db.session.commit()
+
+        print(uname, hash_pass, salt)
+
+    return render_template("new_user.html", user=current_user)
 
 
 @login_manager.user_loader
@@ -33,18 +53,26 @@ def load_user(userid: int):
     return User.query.get(userid)
 
 
-# TODO: Add password stuff
 @app.route('/login', methods=["GET", "POST"])
 def login():
 
     if request.method == "POST":
         user = User.query.filter_by(username=request.form.get("username")).first()
+        password = request.form.get("password")
 
         if user is not None:
-            login_user(user)
-            return render_template("login.html", user=current_user)
+
+            # Compute hash from the form's password and compare to stored hash
+            new_hash_pass = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), user.salt, 100000)
+
+            # Login if hashes match
+            if new_hash_pass == user.password:
+                login_user(user)
+                return render_template("login.html", user=current_user)
+            else:
+                return render_template("login.html", user=current_user, error="Incorrect Username or Password")
         else:
-            return render_template("login.html", user=current_user, error="No user under that username")
+            return render_template("login.html", user=current_user, error="Incorrect Username or Password")
 
     return render_template("login.html", user=current_user)
 
