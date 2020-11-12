@@ -17,6 +17,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+# TODO: add password field with hash function and things
 class User(UserMixin, db.Model):
     '''
     Class to represent the users table in users.db
@@ -32,27 +33,30 @@ def load_user(userid: int):
     return User.query.get(userid)
 
 
+# TODO: Add password stuff
 @app.route('/login', methods=["GET", "POST"])
 def login():
 
-    print(current_user)
-
     if request.method == "POST":
-        print(request.form.get("username"))
         user = User.query.filter_by(username=request.form.get("username")).first()
-        login_user(user)
 
-        return render_template("login.html", user=current_user)
+        if user is not None:
+            login_user(user)
+            return render_template("login.html", user=current_user)
+        else:
+            return render_template("login.html", user=current_user, error="No user under that username")
 
     return render_template("login.html", user=current_user)
 
 
-# TODO: Add actual logout page
+# TODO: Redirect logout to login page if there is no current_user
 @app.route('/logout')
 @login_required
 def logout():
+    tmp_user = current_user.username
     logout_user()
-    return "You are now logged out"
+    return render_template("logout.html", user=tmp_user)
+
 
 # TODO: Remove at some point, just a test page for the moment
 @app.route('/tmp')
@@ -135,6 +139,7 @@ def quiz():
                 result["personalityType"] += "J"
 
             # Send to database
+            # TODO: Add user id to submission in database
             conn = get_db_connection()
             conn.execute("INSERT INTO submissions (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         (result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
