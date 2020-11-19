@@ -9,6 +9,11 @@
     <a href="#">
         <h2>{{ post['id'] }}</h2>
     </a>
+    {% if post['userID'] is not none: %}
+      <p>{{ post['userID'] }}</p>
+    {% else %}
+      <p>Anonymous</p>
+    {% endif %}
     <p> Personality Type: {{ post['personalityType'] }}</p>
     <p> {{ post['sumE'] }} &nbsp;
         {{ post['sumI'] }} &nbsp;

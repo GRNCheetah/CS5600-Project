@@ -7,7 +7,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # Secret key of random bytes (used for sessions and user login implementation)
-# app.secret_key = b'\x15\xbe\x9bW\x80\xa1\x8d\xe0\x907\x08D\xfbr\x81\xf7'
+app.secret_key = b'\x15\xbe\x9bW\x80\xa1\x8d\xe0\x907\x08D\xfbr\x81\xf7'
 
 # Flask SQL Alchemy Setup
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -43,6 +43,7 @@ def new_user():
         db.session.add(User(username=uname, password=hash_pass, salt=salt))
         db.session.commit()
 
+        # TODO: Remove debug prints
         print(uname, hash_pass, salt)
 
     return render_template("new_user.html", user=current_user)
@@ -168,9 +169,14 @@ def quiz():
 
             # Send to database
             # TODO: Add user id to submission in database
+            if not current_user.is_authenticated:
+                u_id = None
+            else:
+                u_id = current_user.username
+
             conn = get_db_connection()
-            conn.execute("INSERT INTO submissions (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
+            conn.execute("INSERT INTO submissions (userID, sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                        (u_id, result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
             conn.commit()
             conn.close()
             return render_template("results.html", user_result=result)

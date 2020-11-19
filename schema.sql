@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS submissions;
 
 CREATE TABLE submissions (
   id INTEGER PRIMARY KEY,
+  userID TEXT,
   sumE INTEGER NOT NULL,
   sumI INTEGER NOT NULL,
   sumS INTEGER NOT NULL,
