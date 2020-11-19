@@ -1,13 +1,12 @@
 from flask import Blueprint, Flask, render_template, request
 import sqlite3
+from init_db import *
 app = Flask(__name__)
 
 NUM_QUESTIONS = 50
 
-def get_db_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+conn = init_tables()
+
 
 @app.route("/")
 def home():
