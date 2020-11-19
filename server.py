@@ -19,6 +19,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+# Potential TODO: Get the submissions stuff set up on SQL alchemy for
+# consistency and easy of use throughout the program
 class User(UserMixin, db.Model):
     '''
     Class to represent the users table in users.db
@@ -120,6 +122,7 @@ def quiz():
 
             # Calculate sums for each trait
             result = {
+                "userID": None,
                 "sumE": 0,
                 "sumI": 0,
                 "sumS": 0,
@@ -167,13 +170,18 @@ def quiz():
             else:
                 result["personalityType"] += "J"
 
-            # Send to database
-            # TODO: Add user id to submission in database
+            # Check if there is a user logged in
+            # If so we get their username and insert that into
+            # the submission in the database, else we simply
+            # insert None (which will display as anonymous on
+            # the data page)
             if not current_user.is_authenticated:
                 u_id = None
             else:
                 u_id = current_user.username
+                result["username"] = u_id
 
+            # Send to database
             conn = get_db_connection()
             conn.execute("INSERT INTO submissions (userID, sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         (u_id, result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
@@ -188,6 +196,18 @@ def quiz():
 
 @app.route("/results")
 def results(data=None):
+    # If there is a current user logged in, get their specific result
+    # and display it on the results page
+    if current_user.is_authenticated:
+        conn = get_db_connection()
+        user_data = conn.execute("SELECT * FROM submissions WHERE userID=\"" + current_user.username + "\";").fetchall()
+        conn.close()
+
+        # Check if the current user has a submission.
+        # If not, display the default page
+        if user_data != []:
+            return render_template("results.html", user_result=user_data[0])
+
     return render_template("results.html", user_result={})
 
 
@@ -196,6 +216,7 @@ def data():
     conn = get_db_connection()
     posts = conn.execute('SELECT * FROM submissions').fetchall()
     conn.close()
+    print(posts)
     return render_template("data.html", posts=posts)
 
 if __name__ == '__main__':
