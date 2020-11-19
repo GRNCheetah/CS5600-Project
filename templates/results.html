@@ -4,7 +4,7 @@
 {% block nav_results %}active{% endblock %}
 
 {% block content %}
-<p>This page should show the results of a quiz normally, but show a kind message to redirect to the quiz if they come here from scratch</p>
+<p>There are 16 different personality types defined by the Myers Briggs Personality test</p>
     {% if user_result != {} %}
 
     <h2>Your results!</h2>
@@ -20,6 +20,27 @@
         {{ user_result['sumP'] }}</p>
     <hr>
     {% else %}
-    <p>You should not be here yet. Take the Quiz!</p>
+    <p>You should not be here yet. Take the <a href="/quiz">Quiz</a>!</p>
     {% endif %}
+
+    <ul>
+        <li>ENTJ - The Commander</li>
+        <li>INTJ - The Mastermind</li>
+        <li>ENTP - The Visionary</li>
+        <li>INTP - The Architect</li>
+        <li>ENFJ - The Teacher</li>
+        <li>INFJ - The Counselor</li>
+        <li>ENFP - The Champion</li>
+        <li>INFP - The Healer</li>
+        <li>ESTJ - The Supervisor</li>
+        <li>ISTJ - The Inspector</li>
+        <li>ESFJ - The Provider</li>
+        <li>ISFJ - The Protector</li>
+        <li>ESTP - The Dynamo</li>
+        <li>ISTP - The Craftsperson</li>
+        <li>ESFP - The Entertainer</li> 
+        <li>ISFP - The Composer</li>
+    </ul>
+    
+
 {% endblock %}
