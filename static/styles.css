@@ -44,5 +44,25 @@ h3 {
     background-color: #635C4B;
 }
 
+.wrapper {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    background-color: #FDF6DA;
+    grid-gap: 10px;
+    color: #444;
+  }
+  
+  .box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+  }
 
-
+  .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%
+  }
