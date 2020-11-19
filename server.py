@@ -82,7 +82,7 @@ def update_summary_graphs():
     ax.tick_params(axis='both', which='major', labelsize=13)
     fig.suptitle('Individual Trait Distribution', fontsize=16)
     fig.tight_layout()
-    fig.savefig('./assets/bar.png', dpi=300, bbox_inches='tight', transparent=False)
+    # fig.savefig('./assets/bar.png', dpi=300, bbox_inches='tight', transparent=False)
 
     return fig
 
