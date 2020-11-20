@@ -2,8 +2,8 @@ import os
 import hashlib
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from flask import Flask, render_template, request
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 # Secret key of random bytes (used for sessions and user login implementation)
@@ -45,9 +45,6 @@ def new_user():
         db.session.add(User(username=uname, password=hash_pass, salt=salt))
         db.session.commit()
 
-        # TODO: Remove debug prints
-        print(uname, hash_pass, salt)
-
     return render_template("new_user.html", user=current_user)
 
 
@@ -72,28 +69,20 @@ def login():
             if new_hash_pass == user.password:
                 login_user(user)
                 return render_template("login.html", user=current_user)
-            else:
-                return render_template("login.html", user=current_user, error="Incorrect Username or Password")
-        else:
-            return render_template("login.html", user=current_user, error="Incorrect Username or Password")
+
+        return render_template("login.html", user=current_user, error="Incorrect Username or Password")
 
     return render_template("login.html", user=current_user)
 
 
-# TODO: Redirect logout to login page if there is no current_user
 @app.route('/logout')
-@login_required
 def logout():
-    tmp_user = current_user.username
-    logout_user()
-    return render_template("logout.html", user=tmp_user)
+    if current_user.is_authenticated:
+        tmp_user = current_user.username
+        logout_user()
+        return render_template("logout.html", user=tmp_user)
 
-
-# TODO: Remove at some point, just a test page for the moment
-@app.route('/tmp')
-@login_required
-def tmp():
-    return "The current user is " + current_user.username
+    return redirect(url_for('login'))
 
 
 NUM_QUESTIONS = 50
@@ -187,7 +176,7 @@ def quiz():
                         (u_id, result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
             conn.commit()
             conn.close()
-            return render_template("results.html", user_result=result)
+            return redirect(url_for('results'))
         else:
             return render_template("quiz.html")
     except Exception as e:
@@ -200,15 +189,15 @@ def results(data=None):
     # and display it on the results page
     if current_user.is_authenticated:
         conn = get_db_connection()
-        user_data = conn.execute("SELECT * FROM submissions WHERE userID=\"" + current_user.username + "\";").fetchall()
+        posts = conn.execute("SELECT * FROM submissions WHERE userID=\"" + current_user.username + "\";").fetchall()
         conn.close()
 
         # Check if the current user has a submission.
         # If not, display the default page
-        if user_data != []:
-            return render_template("results.html", user_result=user_data[0])
+        if posts != []:
+            return render_template("results.html", posts=posts)
 
-    return render_template("results.html", user_result={})
+    return render_template("results.html", posts={})
 
 
 @app.route("/data")
