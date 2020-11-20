@@ -1,4 +1,5 @@
 import sqlite3
+from server import db
 
 connection = sqlite3.connect('database.db')
 
@@ -10,3 +11,6 @@ cur = connection.cursor()
 
 connection.commit()
 connection.close()
+
+# Create user table in users.db
+db.create_all()
