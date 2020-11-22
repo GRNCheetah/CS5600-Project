@@ -5,6 +5,8 @@
 Install `flask` if necessary:
 
 `$ pip install flask`
+`$ pip install flask_sqlalchemy`
+`$ pip install flask_login`
 
 Simply run the application from the command line:
 
