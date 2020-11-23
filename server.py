@@ -36,14 +36,21 @@ class User(UserMixin, db.Model):
 @app.route("/new_user", methods=["GET", "POST"])
 def new_user():
     if request.method == "POST":
-        print("HELLO")
-        # Create new user
-        # Generate salt for storing passwords in the database
-        uname = request.form.get("username")
-        salt = os.urandom(32)
-        hash_pass = hashlib.pbkdf2_hmac('sha256', request.form.get("password").encode('utf-8'), salt, 100000)
-        db.session.add(User(username=uname, password=hash_pass, salt=salt))
-        db.session.commit()
+        db_query = User.query.filter_by(username=request.form.get("username")).first()
+
+        if db_query is None:
+
+            # Create new user
+            # Generate salt for storing passwords in the database
+            uname = request.form.get("username")
+            salt = os.urandom(32)
+            hash_pass = hashlib.pbkdf2_hmac('sha256', request.form.get("password").encode('utf-8'), salt, 100000)
+            db.session.add(User(username=uname, password=hash_pass, salt=salt))
+            db.session.commit()
+
+            return redirect(url_for('login'))
+        else:
+            return render_template("new_user.html", user=current_user, error="Username already in use!")
 
     return render_template("new_user.html", user=current_user)
 
