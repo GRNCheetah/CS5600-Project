@@ -5,36 +5,43 @@
 
 {% block content %}
 <br>
-<p>Each color represents the two opposing traits.<br>
-Each trait sum is how often quiz questions were selected that corresponded to that trait.</p>
+<h2>How do you compare to everybody else?</h2>
+<p>If you haven't taken the Myers-Briggs Personality Quiz yet, you should <a href="quiz">take it now</a>!</p>
+
+<br>
+<i>The following data is from those that completed a personality quiz here.</i>
+<br><br>
+
+<h3>What are the most dominant traits?</h3>
+<p>The following graph demonstrates which individual traits were <b>most popular</b> and <b>least popular</b>. Each color represents two opposing traits.</p>
 <img src="/summary_plot.png" alt="my plot">
-<br>
-<p>Description here...</p>
+<br><br>
+
+<h3>How common are my traits to others?</h3>
+<p>The next graphs depict the classification between each of the two opposing traits.</p>
 <img src="/EI_plot.png" alt="Extroverted vs Introverted trait">
-<br>
-<p>Description here...</p>
+<br><br>
 <img src="/SN_plot.png" alt="Sensor vs Intuitive trait">
-<br>
-<p>Description here...</p>
+<br><br>
 <img src="/TF_plot.png" alt="Thinker vs Feeler trait">
-<br>
-<p>Description here...</p>
+<br><br>
 <img src="/JP_plot.png" alt="Judger vs Perceiver trait">
-<br>
+<br><br>
 <p>This is where we need to show data to user, and allow them to interact with it.</p>
-    {% for post in posts %}
-    <a href="#">
-        <h2>{{ post['id'] }}</h2>
-    </a>
-    <p> Personality Type: {{ post['personalityType'] }}</p>
-    <p> {{ post['sumE'] }} &nbsp;
-        {{ post['sumI'] }} &nbsp;
-        {{ post['sumS'] }} &nbsp;
-        {{ post['sumN'] }} &nbsp;
-        {{ post['sumT'] }} &nbsp;
-        {{ post['sumF'] }} &nbsp;
-        {{ post['sumJ'] }} &nbsp;
-        {{ post['sumP'] }}</p>
-    <hr>
-    {% endfor %}
+{% for post in posts %}
+<a href="#">
+<h2>{{ post['id'] }}</h2>
+</a>
+<p> Personality Type: {{ post['personalityType'] }}</p>
+<p> {{ post['sumE'] }} &nbsp;
+{{ post['sumI'] }} &nbsp;
+{{ post['sumS'] }} &nbsp;
+{{ post['sumN'] }} &nbsp;
+{{ post['sumT'] }} &nbsp;
+{{ post['sumF'] }} &nbsp;
+{{ post['sumJ'] }} &nbsp;
+{{ post['sumP'] }}</p>
+<hr>
+{% endfor %}
+
 {% endblock %}
