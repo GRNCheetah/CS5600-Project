@@ -8,7 +8,7 @@ CHECKBOX = '\t<input type="checkbox" name="{}" value="{}"{}> {} <br>\n'
 with open("questions.txt") as file:
     q_num = 1
     html = '''<form name="quiz" method="POST">
-<h3><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h3>'''
+<h2><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h2>'''
     while q_num <= 25:
         question = file.readline().strip()
         q1 = file.readline().strip().split(" ")
@@ -43,7 +43,7 @@ with open("questions.txt") as file:
     
     q_num += 1
 
-    html += '<h3><b>Part 2: </b> Which word in each pair appeals to you more?</h3>\n'
+    html += '<h2><b>Part 2: </b> Which word in each pair appeals to you more?</h2>\n'
 
     while q_num <= 50:
         q1 = file.readline().strip().split()
