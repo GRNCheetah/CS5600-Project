@@ -4,8 +4,9 @@
 {% block nav_results %}active{% endblock %}
 
 {% block content %}
-<p>There are 16 different personality types defined by the Myers Briggs Personality test</p>
-    {% if user_result != {} %}
+<h2>Quiz Results</h2>
+
+{% if user_result != {} %}
 
 <h2>Your results!</h2>
 
@@ -20,27 +21,14 @@
     {{ user_result['sumP'] }}</p>
 <hr>
 {% else %}
+
 <p>You should not be here yet. Take the <a href="/quiz">Quiz</a>!</p>
 {% endif %}
 
-<div class="wrapper">
-    <div class="box">ENTJ - The Commander</div>
-    <div class="box">INTJ - The Mastermind</div>
-    <div class="box">ENTP - The Visionary</div>
-    <div class="box">INTP - The Architect</div>
-    <div class="box">ENFJ - The Teacher</div>
-    <div class="box">INFJ - The Counselor</div>
-    <div class="box">ENFP - The Champion</div>
-    <div class="box">INFP - The Healer</div>
-    <div class="box">ESTJ - The Supervisor</div>
-    <div class="box">ISTJ - The Inspector</div>
-    <div class="box">ESFJ - The Provider</div>
-    <div class="box">ISFJ - The Protector</div>
-    <div class="box">ESTP - The Dynamo</div>
-    <div class="box">ISTP - The Craftsperson</div>
-    <div class="box">ESFP - The Entertainer</div> 
-    <div class="box">ISFP - The Composer</div>
-</div>
+
+<br \><br \><br \>
+
+
     
 
 {% endblock %}

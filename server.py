@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, render_template, request
 import sqlite3
 from init_db import *
+import os
 app = Flask(__name__)
 
 NUM_QUESTIONS = 50
@@ -98,6 +99,16 @@ def data():
     posts = conn.execute('SELECT * FROM submissions').fetchall()
     conn.close()
     return render_template("data.html", posts=posts)
+
+@app.route("/personalities/<p_type>")
+def personalities(p_type=""):
+    p_type = p_type.lower()
+    TYPES = ['entj', 'intj', 'entp', 'intp', 'enfj', 'infj', 'enfp', 'infp', 'estj', 'istj', 'esfj', 'isfj', 'estp', 'istp', 'esfp', 'isfp']
+    print(p_type)
+    if p_type in TYPES:
+        return render_template(os.path.join("pers", p_type + ".html"))
+    else:
+        return render_template("personalities.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

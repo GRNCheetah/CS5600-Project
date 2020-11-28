@@ -48,20 +48,20 @@ h3 {
     background-color: #FDF6DA;
     grid-gap: 10px;
     color: #444;
-  }
-  
-  .box {
+}
+
+.box {
     background-color: #444;
     color: #fff;
     border-radius: 5px;
     padding: 20px;
     font-size: 150%;
-  }
+}
 
-  .footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-  }
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
