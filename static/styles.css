@@ -1,49 +1,76 @@
 body {
-    background-color: #FDF6DA;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #96B590;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: x-large;
-}
-
-li {
-    display: inline;
-}
-
-li a {
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: #FDF6DA;
+  background-color: #fdf6da;
 }
 
 h1 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-    color: #27353D; 
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+  color: #27353d;
 }
 
 p {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #27353D; 
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #27353d;
+}
+
+h3 {
+  color: #27353d;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #96b590;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: x-large;
+}
+
+.navbar_li {
+  display: inline;
+}
+
+.navbar_a {
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #fdf6da;
 }
 
 .active {
-    background-color: #635C4B;
+  background-color: #635c4b;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  background-color: #fdf6da;
+  grid-gap: 10px;
+  color: #444;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
 
 h3 {
-    color: #27353D;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #27353d;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }

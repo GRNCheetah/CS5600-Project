@@ -11,18 +11,18 @@
 <h1>Quiz Time</h1>
 
 <nav>
-    <ul>
-        <li><a href="/" class="{% block nav_index %}{% endblock %}">Home</a></li>
-        <li><a href="/quiz" class="{% block nav_quiz %}{% endblock %}">Quiz</a></li>
-        <li><a href="/data" class="{% block nav_data %}{% endblock %}">Data</a></li>
-        <li><a href="/results" class="{% block nav_results %}{% endblock %}">Results</a></li>
+    <ul class="navbar">
+        <li class="navbar_li"><a href="/" class="{% block nav_index %}{% endblock %} navbar_a">Home</a></li>
+        <li class="navbar_li"><a href="/quiz" class="{% block nav_quiz %}{% endblock %} navbar_a">Quiz</a></li>
+        <li class="navbar_li"><a href="/data" class="{% block nav_data %}{% endblock %} navbar_a">Data</a></li>
+        <li class="navbar_li"><a href="/results" class="{% block nav_results %}{% endblock %} navbar_a">Results</a></li>
     </ul>    
 </nav>
 
 {% block content %}{% endblock %}
 
 
-<div class="footer">Made by Team</div>
+<div class="footer">Made by Team "Two Peas and a Pod"</div>
 </body>
 
 </html>
