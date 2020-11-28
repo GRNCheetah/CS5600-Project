@@ -6,8 +6,9 @@
 {% block content %}
 
 <form name="quiz" method="POST">
-<h3><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h3>
-<div class="quiz_wrapper">
+<div class="quiz-part-1">
+<h2><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h2>
+<div class="quiz-part-1-grid">
 <div class='question'>When you go somewhere for the day, would you rather:</div>
 <div class='answer'>
 	<input type="radio" name="1" value="J2" required> Plan what you will do and when, or <br>
@@ -135,12 +136,18 @@
 	<input type="radio" name="25" value="I0"> Keep your feelings to yourself? <br>
 </div>
 </div>
-<h3><i>For this question, select all answers that are true.</i></h3>In your daily work, do you
+<h3><i>For this question, select all answers that are true.</i></h3>
+<div class="quiz-part-1-grid">
+<div class="question">In your daily work, do you</div>
+<div class='answer'>
 	<input type="checkbox" name="26" value="J1"> Usually plan your work so you won't need to work under pressure, or <br>
 	<input type="checkbox" name="26" value="P1"> Rather enjoy an emergency that makes you work against time, or <br>
 	<input type="checkbox" name="26" value="J0"> Hate to work under pressure? <br>
-
-<h3><b>Part 2: </b> Which word in each pair appeals to you more?</h3>
+</div>
+</div>
+</div>
+<div class="quiz-part-2"><h2><b>Part 2: </b> Which word in each pair appeals to you more?</h2>
+<div class="quiz-part-2-grid">
 <div class="radio-toolbar">
 	<input type="radio" id="27a" name="27" value="J2" required>
 	<label for="27a">Scheduled</label>
@@ -309,5 +316,7 @@
 	<label for="50b">Soft</label>
 </div>
 <br>
-<button type="submit">Submit</button></form>
+</div>
+</div>
+<div class="center"><button class="submit-button" type="submit">Submit</button></div></form>
 {% endblock %}

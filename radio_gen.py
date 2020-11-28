@@ -15,8 +15,9 @@ with open("questions.txt") as file:
 {% block content %}
 
 <form name="quiz" method="POST">
-<h3><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h3>
-<div class="quiz_wrapper">\n'''
+<div class="quiz-part-1">
+<h2><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h2>
+<div class="quiz-part-1-grid">\n'''
     while q_num <= 25:
         question = file.readline().strip()
         q1 = file.readline().strip().split(" ")
@@ -36,7 +37,7 @@ with open("questions.txt") as file:
         
         q_num += 1
 
-    html += '</div>\n<h3><i>For this question, select all answers that are true.</i></h3>'
+    html += '</div>\n<h3><i>For this question, select all answers that are true.</i></h3>\n<div class="quiz-part-1-grid">\n<div class="question">'
 
     question = file.readline().strip()
     q1 = file.readline().strip().split(" ")
@@ -44,14 +45,14 @@ with open("questions.txt") as file:
     q3 = file.readline().strip().split(" ")
     file.readline()
 
-    html += question + "\n" + \
+    html += question + "</div>\n<div class='answer'>\n" + \
             CHECKBOX.format(q_num, q1[0], "", " ".join(q1[1:])) + \
             CHECKBOX.format(q_num, q2[0], "", " ".join(q2[1:])) + \
-            CHECKBOX.format(q_num, q3[0], "", " ".join(q3[1:])) + "\n"
+            CHECKBOX.format(q_num, q3[0], "", " ".join(q3[1:])) + "</div>\n"
     
     q_num += 1
 
-    html += '<h2><b>Part 2: </b> Which word in each pair appeals to you more?</h2>\n'
+    html += '</div>\n</div>\n<div class="quiz-part-2"><h2><b>Part 2: </b> Which word in each pair appeals to you more?</h2>\n<div class="quiz-part-2-grid">\n'
 
     while q_num <= 50:
         q1 = file.readline().strip().split()
@@ -70,7 +71,7 @@ with open("questions.txt") as file:
         
         q_num += 1
 
-    html += '<button type="submit">Submit</button></form>\n{% endblock %}'
+    html += '</div>\n</div>\n<div class="center"><button class="submit-button" type="submit">Submit</button></div></form>\n{% endblock %}'
     
 
 with open("quiz.html", "w") as file:
