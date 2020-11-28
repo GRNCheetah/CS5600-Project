@@ -114,12 +114,41 @@ div.dropdown {
   overflow: visible;
 }
 
+/* Quiz Grids */
+.quiz_wrapper {
+  display: grid;
+  margin: 25px;
+  grid-template-columns: 600px 600px;
+  background-color: var(--bg);
+  grid-row-gap: 20px;
+  justify-content: center;
+}
+
+.question {
+  color: var(--font_col);
+  text-align: left;
+  background-color: var(--nav_col);
+  vertical-align: text-top;
+  font-family: var(--fonts);
+  font-size: larger;
+  padding: 5px;
+}
+
+.answer {
+  color: var(--font_col);
+  text-align: left;
+  background-color: var(--nav_col);
+  font-family: var(--fonts);
+  padding: 5px;
+}
+
 /* Personality Grids */
 .wrapper {
   display: grid;
   grid-template-columns: 250px 250px 250px 250px;
   background-color: var(--bg);
   grid-gap: 10px;
+  justify-content: center;
 }
 
 .types {
@@ -154,6 +183,8 @@ div.dropdown {
   text-align: center;
 }
 
+
+/* For the Quiz page */
 .radio-toolbar {
   margin: 7px;
   margin-left: auto;
