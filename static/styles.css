@@ -80,6 +80,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
 .footer {
   position: fixed;
   left: 0;
@@ -118,4 +119,22 @@ div.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
   overflow: visible;
+}
+
+.datagraph {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 50%;
+}
+
+.datagraph img {
+  width: 100%;
+}
+
+.center {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
