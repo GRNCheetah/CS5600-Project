@@ -1,7 +1,9 @@
 
 
-RADIO = '<input type="radio" name="{}" value="{}"{}> {} <br>\n'
-CHECKBOX = '<input type="checkbox" name="{}" value="{}"{}> {} <br>\n'
+RADIO1 = '\t<input type="radio" name="{}" value="{}"{}> {} <br>\n'
+RADIO2 = '\t<input type="radio" id="{}" name="{}" value="{}"{}>\n'
+LABEL = '\t<label for="{}">{}</label>\n'
+CHECKBOX = '\t<input type="checkbox" name="{}" value="{}"{}> {} <br>\n'
 
 with open("questions.txt") as file:
     q_num = 1
@@ -13,12 +15,12 @@ with open("questions.txt") as file:
         q2 = file.readline().strip().split(" ")
 
         html += "<h3>" + question + "</h3>\n" + \
-                RADIO.format(q_num, q1[0], " required", " ".join(q1[1:])) + \
-                RADIO.format(q_num, q2[0], "", " ".join(q2[1:]))
+                RADIO1.format(q_num, q1[0], " required", " ".join(q1[1:])) + \
+                RADIO1.format(q_num, q2[0], "", " ".join(q2[1:]))
 
         if q_num == 7:
             q3 = file.readline().strip().split(" ")
-            html += RADIO.format(q_num, q2[0], "", " ".join(q3[1:]))
+            html += RADIO1.format(q_num, q2[0], "", " ".join(q3[1:]))
 
         html += "\n"
 
@@ -35,20 +37,24 @@ with open("questions.txt") as file:
     file.readline()
 
     html += "<h3>" + question + "</h3>\n" + \
-            CHECKBOX.format(q_num, q1[0], " required", " ".join(q1[1:])) + \
+            CHECKBOX.format(q_num, q1[0], "", " ".join(q1[1:])) + \
             CHECKBOX.format(q_num, q2[0], "", " ".join(q2[1:])) + \
             CHECKBOX.format(q_num, q3[0], "", " ".join(q3[1:])) + "\n"
     
     q_num += 1
 
-    html += '<h3><b>Part 2: </b> Which word in each pair appeals to you more?</h3>'
+    html += '<h3><b>Part 2: </b> Which word in each pair appeals to you more?</h3>\n'
 
     while q_num <= 50:
         q1 = file.readline().strip().split()
         q2 = file.readline().strip().split()
 
-        html += RADIO.format(q_num, q1[0], " required", " ".join(q1[1:])) + \
-                RADIO.format(q_num, q2[0], "", " ".join(q2[1:]))
+        html += '<div class="radio-toolbar">\n'
+        html += RADIO2.format(str(q_num)+"a", q_num, q1[0], " required") + \
+                LABEL.format(str(q_num)+"a", " ".join(q1[1:])) + \
+                RADIO2.format(str(q_num)+"b", q_num, q2[0], "") + \
+                LABEL.format(str(q_num)+"b", " ".join(q2[1:]))
+        html += '</div>\n'
 
         html += "<br>\n"
 
