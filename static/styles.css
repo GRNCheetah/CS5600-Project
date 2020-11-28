@@ -1,9 +1,14 @@
 :root {
-    --main: #DA4454;
-    --bg: #F4DD7F;
+    --main: #405c70;
+    --bg: #b1a296;
+    --font_col: ;
+    --nav_col: #7395ae;
+    --nav_active_col: #5d5c61;
+    --nav_hover_col: #379683;
     --fonts: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/* Generic for all the site */
 body {
     background-color: var(--bg);
     margin: 0;
@@ -12,80 +17,24 @@ body {
 h1 {
     font-family: var(--fonts);
     text-align: center;
-    color: #27353D; 
+    color: var(--font_col); 
 }
 
 p {
     font-family: var(--fonts);
-    color: #27353D; 
+    color: var(--font_col); 
 }
 
 h3 {
-    color: #27353D;
     font-family: var(--fonts);
-}
-
-.navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #96B590;
-    font-family: var(--fonts);
-    font-size: x-large;
-}
-
-.navbar_li {
-  display: inline;
-}
-
-.navbar_a {
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  color: #fdf6da;
-}
-
-.navbar_a:hover,
-.dropdown:hover {
-  background-color: red;
-}
-
-.navbar_li.dropdown {
-  display: inline-block;
-}
-
-.active {
-  background-color: #635c4b;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 200px 200px 200px 200px;
-  background-color: #fdf6da;
-  grid-gap: 10px;
-  color: #444;
-}
-
-.types {
-  text-decoration: none;
-}
-
-.box {
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 150%;
-}
-
-h3 {
-  color: #27353d;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    color: var(--font_col);
 }
 
 header {
-    background-color: var(--main);
-    padding: .5%;
+    /* background-color: var(--main); */
+    background: rgb(85,122,149);
+    background: linear-gradient(to bottom, rgba(64,92,112,1) 0%, rgba(115,149,174,1) 100%);
+    padding: 5px;
 }
 
 footer {
@@ -98,39 +47,106 @@ footer {
     text-align: center;
     font-family: var(--fonts);
 }
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+/* For the nav bar */
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    background-color: var(--nav_col);
+    font-family: var(--fonts);
+    font-size: x-large;
+}
+
+.navbar_li {
+  display: inline;
 }
 
 div.dropdown {
   display: inline-block;
 }
 
+.navbar_a {
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--font_col);
+  border-radius: 15px;
+}
+
+.navbar_a:hover,
+.dropdown:hover {
+  background-color: var(--nav_hover_col);
+}
+
+.active {
+  background-color: var(--nav_active_col);
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
   margin-top: 14px;
-  background-color: #635c4b;
-  min-width: 160px;
+  background-color: var(--nav_hover_col);
+  width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
-  color: #fdf6da;
-  padding: 12px 16px;
+  color: var(--font_col);
+  padding: 10px 16px;
   text-decoration: none;
   display: block;
-  text-align: left;
+  text-align: center;
 }
 
 .dropdown-content a:hover {
-  background-color: #837963;
+  background-color: var(--nav_active_col);
   /* overflow: visible; */
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
   overflow: visible;
+}
+
+/* Personality Grids */
+.wrapper {
+  display: grid;
+  grid-template-columns: 250px 250px 250px 250px;
+  background-color: var(--bg);
+  grid-gap: 10px;
+}
+
+.types {
+  text-decoration: none;
+  color: var(--font_col);
+}
+
+.box {
+  background-color: var(--nav_col);
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  text-align: center;
+}
+
+/* Used for the Data page */ 
+.datagraph {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 50%;
+}
+
+.datagraph img {
+  width: 100%;
+}
+
+.center {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
