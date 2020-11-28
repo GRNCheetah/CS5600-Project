@@ -16,7 +16,14 @@
 
 <nav>
     <ul class="navbar">
-        <li class="navbar_li"><a href="/" class="{% block nav_index %}{% endblock %} navbar_a">Home</a></li>
+        <div class="dropdown">
+            <li class="navbar_li"><a href="/" class="{% block nav_index %}{% endblock %} navbar_a">Home</a></li>
+            <div class="dropdown-content">
+                <a href="/">abc</a>
+                <a href="/">xyz</a>
+                <a href="/">123</a>
+            </div>
+        </div>
         <li class="navbar_li"><a href="/quiz" class="{% block nav_quiz %}{% endblock %} navbar_a">Quiz</a></li>
         <li class="navbar_li"><a href="/data" class="{% block nav_data %}{% endblock %} navbar_a">Data</a></li>
         <li class="navbar_li"><a href="/results" class="{% block nav_results %}{% endblock %} navbar_a">Results</a></li>
