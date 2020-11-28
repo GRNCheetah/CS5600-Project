@@ -7,7 +7,8 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 # Secret key of random bytes (used for sessions and user login implementation)
-app.secret_key = b'\x15\xbe\x9bW\x80\xa1\x8d\xe0\x907\x08D\xfbr\x81\xf7'
+# Generated randomly each time the app is run
+app.secret_key = os.urandom(16)
 
 # Flask SQL Alchemy Setup
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
