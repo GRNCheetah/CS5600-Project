@@ -116,7 +116,6 @@ def update_trait_graph():
     posts = conn.execute('SELECT * FROM submissions').fetchall()
     conn.close()
 
-    # Data currently stored in two different methods for data calculations.
     traits = {
         'Extrovert': 0,
         'Introvert': 0,
