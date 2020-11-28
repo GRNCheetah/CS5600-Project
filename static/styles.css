@@ -58,6 +58,10 @@ h3 {
     font-size: 150%;
 }
 
+.types {
+    text-decoration: none;
+}
+
 .footer {
     position: fixed;
     left: 0;
