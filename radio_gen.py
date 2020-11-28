@@ -3,7 +3,10 @@
 RADIO1 = '\t<input type="radio" name="{}" value="{}"{}> {} <br>\n'
 RADIO2 = '\t<input type="radio" id="{}" name="{}" value="{}"{}>\n'
 LABEL = '\t<label for="{}">{}</label>\n'
-CHECKBOX = '\t<input type="checkbox" name="{}" value="{}"{}> {} <br>\n'
+CHECKBOX = '<label class="checkbox-container">{}\n\
+\t<input type="checkbox" name="{}" value="{}">\n\
+\t<span class="checkmark"></span>\n\
+</label>\n'
 
 with open("questions.txt") as file:
     q_num = 1
@@ -28,7 +31,7 @@ with open("questions.txt") as file:
         
         q_num += 1
 
-    html += '<h3><i>For this question, select all answers that are true.</i></h3>'
+    html += '<h3><i>For this question, select all answers that are true.</i></h3>\n'
 
     question = file.readline().strip()
     q1 = file.readline().strip().split(" ")
@@ -37,9 +40,9 @@ with open("questions.txt") as file:
     file.readline()
 
     html += "<h3>" + question + "</h3>\n" + \
-            CHECKBOX.format(q_num, q1[0], "", " ".join(q1[1:])) + \
-            CHECKBOX.format(q_num, q2[0], "", " ".join(q2[1:])) + \
-            CHECKBOX.format(q_num, q3[0], "", " ".join(q3[1:])) + "\n"
+            CHECKBOX.format(" ".join(q1[1:]), q_num, q1[0]) + \
+            CHECKBOX.format(" ".join(q2[1:]), q_num, q2[0]) + \
+            CHECKBOX.format(" ".join(q3[1:]), q_num, q3[0]) + "\n"
     
     q_num += 1
 

@@ -1,61 +1,65 @@
 :root {
-    --main: #405c70;
-    --bg: #b1a296;
-    --font_col: ;
-    --nav_col: #7395ae;
-    --nav_active_col: #5d5c61;
-    --nav_hover_col: #379683;
-    --fonts: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  --main: #405c70;
+  --bg: #b1a296;
+  --font_col: ;
+  --nav_col: #7395ae;
+  --nav_active_col: #5d5c61;
+  --nav_hover_col: #379683;
+  --fonts: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 /* Generic for all the site */
 body {
-    background-color: var(--bg);
-    margin: 0;
+  background-color: var(--bg);
+  margin: 0;
 }
 
 h1 {
-    font-family: var(--fonts);
-    text-align: center;
-    color: var(--font_col); 
+  font-family: var(--fonts);
+  text-align: center;
+  color: var(--font_col);
 }
 
 p {
-    font-family: var(--fonts);
-    color: var(--font_col); 
+  font-family: var(--fonts);
+  color: var(--font_col);
 }
 
 h3 {
-    font-family: var(--fonts);
-    color: var(--font_col);
+  font-family: var(--fonts);
+  color: var(--font_col);
 }
 
 header {
-    /* background-color: var(--main); */
-    background: rgb(85,122,149);
-    background: linear-gradient(to bottom, rgba(64,92,112,1) 0%, rgba(115,149,174,1) 100%);
-    padding: 5px;
+  /* background-color: var(--main); */
+  background: rgb(85, 122, 149);
+  background: linear-gradient(
+    to bottom,
+    rgba(64, 92, 112, 1) 0%,
+    rgba(115, 149, 174, 1) 100%
+  );
+  padding: 5px;
 }
 
 footer {
-    background-color: var(--main);
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: .2%;
-    text-align: center;
-    font-family: var(--fonts);
+  background-color: var(--main);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0.2%;
+  text-align: center;
+  font-family: var(--fonts);
 }
 
 /* For the nav bar */
 .navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
-    background-color: var(--nav_col);
-    font-family: var(--fonts);
-    font-size: x-large;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  background-color: var(--nav_col);
+  font-family: var(--fonts);
+  font-size: x-large;
 }
 
 .navbar_li {
@@ -103,7 +107,6 @@ div.dropdown {
 
 .dropdown-content a:hover {
   background-color: var(--nav_active_col);
-  /* overflow: visible; */
 }
 
 .dropdown:hover .dropdown-content {
@@ -132,7 +135,7 @@ div.dropdown {
   text-align: center;
 }
 
-/* Used for the Data page */ 
+/* Used for the Data page */
 .datagraph {
   margin-left: auto;
   margin-right: auto;
@@ -189,4 +192,64 @@ div.dropdown {
 .radio-toolbar input[type="radio"]:checked + label {
   background-color: #bfb;
   border-color: #4c4;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  /* font-size: 22px; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #4c4;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
