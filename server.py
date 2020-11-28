@@ -62,7 +62,6 @@ def update_summary_graph():
     posts = conn.execute('SELECT * FROM submissions').fetchall()
     conn.close()
 
-    # Data currently stored in two different methods for data calculations.
     summary = {
         'Extrovert': 0,
         'Introvert': 0,
@@ -73,7 +72,6 @@ def update_summary_graph():
         'Judger': 0,
         'Perceiver': 0,
     }
-    df = pd.DataFrame(columns=['Extrovert', 'Introvert', 'Sensor', 'Intuitive', 'Thinker', 'Feeler', 'Judger', 'Perceiver'])
 
     # Store aggregate database data.
     for i in range(0, len(posts)):
@@ -85,15 +83,6 @@ def update_summary_graph():
         summary['Feeler'] += posts[i]['sumF']
         summary['Judger'] += posts[i]['sumJ']
         summary['Perceiver'] += posts[i]['sumP']
-        new_row = { 'Extrovert': posts[i]['sumE'],
-                    'Introvert': posts[i]['sumI'],
-                    'Sensor':    posts[i]['sumS'],
-                    'Intuitive': posts[i]['sumN'],
-                    'Thinker':   posts[i]['sumT'],
-                    'Feeler':    posts[i]['sumF'],
-                    'Judger':    posts[i]['sumJ'],
-                    'Perceiver': posts[i]['sumP'] }
-        df = df.append(new_row, ignore_index=True)
 
     # Sort trait sums in ascending order.
     summary = collections.OrderedDict(sorted(summary.items(), key=lambda kv: kv[1]))
