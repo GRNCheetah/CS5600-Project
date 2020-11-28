@@ -5,4 +5,19 @@
 
 {% block content %}
 <p>This is where we need to show data to user, and allow them to interact with it.</p>
+    {% for post in posts %}
+    <a href="#">
+        <h2>{{ post['id'] }}</h2>
+    </a>
+    <p> Personality Type: {{ post['personalityType'] }}</p>
+    <p> {{ post['sumE'] }} &nbsp;
+        {{ post['sumI'] }} &nbsp;
+        {{ post['sumS'] }} &nbsp;
+        {{ post['sumN'] }} &nbsp;
+        {{ post['sumT'] }} &nbsp;
+        {{ post['sumF'] }} &nbsp;
+        {{ post['sumJ'] }} &nbsp;
+        {{ post['sumP'] }}</p>
+    <hr>
+    {% endfor %}
 {% endblock %}

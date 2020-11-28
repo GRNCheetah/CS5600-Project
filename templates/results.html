@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Results{% endblock %}
+{% block nav_results %}active{% endblock %}
+
+{% block content %}
+<p>This page should show the results of a quiz normally, but show a kind message to redirect to the quiz if they come here from scratch</p>
+    {% if user_result != {} %}
+
+    <h2>Your results!</h2>
+
+    <p> Personality Type: {{ user_result['personalityType'] }}</p>
+    <p> {{ user_result['sumE'] }} &nbsp;
+        {{ user_result['sumI'] }} &nbsp;
+        {{ user_result['sumS'] }} &nbsp;
+        {{ user_result['sumN'] }} &nbsp;
+        {{ user_result['sumT'] }} &nbsp;
+        {{ user_result['sumF'] }} &nbsp;
+        {{ user_result['sumJ'] }} &nbsp;
+        {{ user_result['sumP'] }}</p>
+    <hr>
+    {% else %}
+    <p>You should not be here yet. Take the Quiz!</p>
+    {% endif %}
+{% endblock %}

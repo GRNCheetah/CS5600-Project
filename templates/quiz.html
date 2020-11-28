@@ -4,189 +4,192 @@
 {% block nav_quiz %}active{% endblock %}
 
 {% block content %}
+
 <form name="quiz" method="POST">
 
 <h3><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h3>
 
 <h3>When you go somewhere for the day, would you rather</h3>
-<input type="radio" name="1" value="J2"> Plan what you will do and when, or <br>
+<input type="radio" name="1" value="J2" required> Plan what you will do and when, or <br>
 <input type="radio" name="1" value="P2"> Just go! <br>
 
 <h3>If you were a teacher, would you rather teach</h3>
-<input type="radio" name="2" value="S2"> Facts-based courses, or <br>
+<input type="radio" name="2" value="S2" required> Facts-based courses, or <br>
 <input type="radio" name="2" value="N2"> Courses involving opinion or theory? <br>
 
 <h3>Are you usually</h3>
-<input type="radio" name="3" value="E2"> A "good mixer" with groups of people, or <br>
+<input type="radio" name="3" value="E2" required> A "good mixer" with groups of people, or <br>
 <input type="radio" name="3" value="I2"> Rather quiet and reserved? <br>
 
 <h3>Do you more often let</h3>
-<input type="radio" name="4" value="F1"> Your heart rule your head, or <br>
+<input type="radio" name="4" value="F1" required> Your heart rule your head, or <br>
 <input type="radio" name="4" value="T2"> Your head rule your heart? <br>
 
 <h3>In doing something that many other people would do, would you rather </h3>
-<input type="radio" name="5" value="N1"> Invent a way of your own, or <br>
+<input type="radio" name="5" value="N1" required> Invent a way of your own, or <br>
 <input type="radio" name="5" value="S1"> Do it in the accepted way? <br>
 
 <h3>Among your friends are you </h3>
-<input type="radio" name="6" value="E2"> Full of news about everybody, or <br>
+<input type="radio" name="6" value="E2" required> Full of news about everybody, or <br>
 <input type="radio" name="6" value="I1"> One of the last to hear what is going on? <br>
 
 <h3>Does the idea of making a list of what you should get done over a weekend </h3>
-<input type="radio" name="7" value="J1"> Help you, or <br>
+<input type="radio" name="7" value="J1" required> Help you, or <br>
 <input type="radio" name="7" value="P1"> Stress you, or <br>
 <input type="radio" name="7" value="P1"> Positively depress you? <br>
 
 <h3>When you have a special job to do, do you like to </h3>
-<input type="radio" name="8" value="J1"> Organize it carefully before you start, or  <br>
+<input type="radio" name="8" value="J1" required> Organize it carefully before you start, or  <br>
 <input type="radio" name="8" value="P2"> Find out what is necessary as you go along? <br>
 
 <h3>Do you tend to have</h3>
-<input type="radio" name="9" value="E2"> Broad friendships with many different people, or <br>
+<input type="radio" name="9" value="E2" required> Broad friendships with many different people, or <br>
 <input type="radio" name="9" value="I1"> Deep friendships with very few people? <br>
 
 <h3>Do you admire more the people who are </h3>
-<input type="radio" name="10" value="S1"> Normal-acting to never make themselves the center of attention, or<br>
+<input type="radio" name="10" value="S1" required> Normal-acting to never make themselves the center of attention, or<br>
 <input type="radio" name="10" value="N2"> Too original and individual to care whether they are the center of attention or not? <br>
 
 <h3>Do you prefer to</h3>
-<input type="radio" name="11" value="J2"> Arrange parties well in advance, or<br>
+<input type="radio" name="11" value="J2" required> Arrange parties well in advance, or<br>
 <input type="radio" name="11" value="P1"> Be free to do whatever looks like fun when the time comes?<br>
 
 <h3>Do you usually get along better with</h3>
-<input type="radio" name="12" value="S1"> Realistic people, or<br>
+<input type="radio" name="12" value="S1" required> Realistic people, or<br>
 <input type="radio" name="12" value="N2"> Imaginative people?<br>
 
-<h3>When you are with a groupe of people, would you usually rather</h3>
-<input type="radio" name="13" value="E1"> Join in the talk of the group or<br>
+<h3>When you are with a group of people, would you usually rather</h3>
+<input type="radio" name="13" value="E1" required> Join in the talk of the group or<br>
 <input type="radio" name="13" value="I2"> Stand back and listen first?<br>
 
 <h3>Is it a higher compliment to be called</h3>
-<input type="radio" name="14" value="F1">A person of real feeling, or<br>
+<input type="radio" name="14" value="F1" required> A person of real feeling, or<br>
 <input type="radio" name="14" value="T2"> A consistently reasonable person?<br>
 
 <h3>In reading for pleasure, do you</h3>
-<input type="radio" name="15" value="N0"> Enjoy odd or original ways of saying things, or<br>
+<input type="radio" name="15" value="N0" required> Enjoy odd or original ways of saying things, or<br>
 <input type="radio" name="15" value="S1"> Like writers to say exactly what they mean?<br>
 
 <h3>Do you</h3>
-<input type="radio" name="16" value="E2"> Talk easily to almost anyone for as long as you have to, or<br>
+<input type="radio" name="16" value="E2" required> Talk easily to almost anyone for as long as you have to, or<br>
 <input type="radio" name="16" value="I2"> Find a lot to say only to certain people or under certain conditions?<br>
 
 <h3>Does following a schedule</h3>
-<input type="radio" name="17" value="J2"> Appeal to you, or<br>
+<input type="radio" name="17" value="J2" required> Appeal to you, or<br>
 <input type="radio" name="17" value="P2"> Cramp you?<br>
 
 <h3>When it is settled well in advance that you will do a certain thing at a certain time, do you find it</h3>
-<input type="radio" name="18" value="J1"> Nice to be able to plan accordingly, or<br>
+<input type="radio" name="18" value="J1" required> Nice to be able to plan accordingly, or<br>
 <input type="radio" name="18" value="P1"> A little unpleasant to be tied down?<br>
 
 <h3>Are you more successful</h3>
-<input type="radio" name="19" value="J1"> At following a carefully worked out plan, or<br>
+<input type="radio" name="19" value="J1" required> At following a carefully worked out plan, or<br>
 <input type="radio" name="19" value="P1"> At dealing with the unexpected and seeing what quickly should be done?<br>
 
 <h3>Should you rather be considered</h3>
-<input type="radio" name="20" value="S2"> A practical person, or<br>
+<input type="radio" name="20" value="S2" required> A practical person, or<br>
 <input type="radio" name="20" value="N2"> An out-of-the-box-thinking person?<br>
 
 <h3>In a large group, do you more often</h3>
-<input type="radio" name="21" value="E2"> Introduce others, or<br>
+<input type="radio" name="21" value="E2" required> Introduce others, or<br>
 <input type="radio" name="21" value="I2"> Get introduced?<br>
 
 <h3>Do you usually</h3>
-<input type="radio" name="22" value="F2"> Value emotion more than logic, or<br>
+<input type="radio" name="22" value="F2" required> Value emotion more than logic, or<br>
 <input type="radio" name="22" value="T2"> Value logic more than feelings?<br>
 
 <h3>Would you rather have as a friend</h3>
-<input type="radio" name="23" value="N1"> Someone who is always coming up with new ideas, or<br>
+<input type="radio" name="23" value="N1" required> Someone who is always coming up with new ideas, or<br>
 <input type="radio" name="23" value="S2"> Someone who has both feet on the ground?<br>
 
 <h3>Can the new people you meet tell what you are interested in</h3>
-<input type="radio" name="24" value="E1"> Right away, or<br>
+<input type="radio" name="24" value="E1" required> Right away, or<br>
 <input type="radio" name="24" value="I1"> Only after they really get to know you?<br>
 
 <h3>Do you usually</h3>
-<input type="radio" name="26" value="E1"> Show your feelings freely, or<br>
+<input type="radio" name="26" value="E1" required> Show your feelings freely, or<br>
 <input type="radio" name="26" value="I0"> Keep your feelings to yourself?<br>
 
 <h3><i>For this question, select all answers that are true.</i><br>In your daily work, do you</h3>
-<input type="checkbox" name="25" value="J1"> Usually plan your work so you won't need to work under pressure, or<br>
+<input type="checkbox" name="25" value="J1" required> Usually plan your work so you won't need to work under pressure, or<br>
 <input type="checkbox" name="25" value="P1"> Rather enjoy an emergency that makes you work against time, or<br>
 <input type="checkbox" name="25" value="J0"> Hate to work under pressure?<br>
 
 <h3><b>Part 2: </b> Which word in each pair appeals to you more?</h3>
-<input type="radio" name="27" value="J2"> Scheduled<br>
+<input type="radio" name="27" value="J2" required> Scheduled<br>
 <input type="radio" name="27" value="P2"> Unplanned<br>
 <br>
-<input type="radio" name="28" value="S2"> Facts<br>
+<input type="radio" name="28" value="S2" required> Facts<br>
 <input type="radio" name="28" value="N1"> Ideas<br>
 <br>
-<input type="radio" name="29" value="I2"> Quiet<br>
+<input type="radio" name="29" value="I2" required> Quiet<br>
 <input type="radio" name="29" value="E2"> Hearty<br>
 <br>
-<input type="radio" name="30" value="T2"> Convincing<br>
+<input type="radio" name="30" value="T2" required> Convincing<br>
 <input type="radio" name="30" value="F1"> Touching<br>
 <br>
-<input type="radio" name="31" value="N0"> Imaginative<br>
+<input type="radio" name="31" value="N0" required> Imaginative<br>
 <input type="radio" name="31" value="S2"> Matter-of-fact<br>
 <br>
-<input type="radio" name="32" value="T1"> Benefits<br>
+<input type="radio" name="32" value="T1" required> Benefits<br>
 <input type="radio" name="32" value="F1"> Blessings<br>
 <br>
-<input type="radio" name="33" value="F0"> Peacemaker<br>
+<input type="radio" name="33" value="F0" required> Peacemaker<br>
 <input type="radio" name="33" value="T2"> Judge<br>
 <br>
-<input type="radio" name="34" value="J2"> Systematic<br>
+<input type="radio" name="34" value="J2" required> Systematic<br>
 <input type="radio" name="34" value="P2"> Spontaneous<br>
 <br>
-<input type="radio" name="35" value="S2"> Statement<br>
+<input type="radio" name="35" value="S2" required> Statement<br>
 <input type="radio" name="35" value="N1"> Concept<br>
 <br>
-<input type="radio" name="36" value="I1"> Reserved<br>
+<input type="radio" name="36" value="I1" required> Reserved<br>
 <input type="radio" name="36" value="E2"> Talkative<br>
 <br>
-<input type="radio" name="37" value="T1"> Analyze<br>
+<input type="radio" name="37" value="T1" required> Analyze<br>
 <input type="radio" name="37" value="F2"> Sympathize<br>
 <br>
-<input type="radio" name="38" value="N0"> Create<br>
+<input type="radio" name="38" value="N0" required> Create<br>
 <input type="radio" name="38" value="S2"> Make<br>
 <br>
-<input type="radio" name="39" value="T1"> Determined<br>
+<input type="radio" name="39" value="T1" required> Determined<br>
 <input type="radio" name="39" value="F1"> Devoted<br>
 <br>
-<input type="radio" name="40" value="F1"> Gentle<br>
+<input type="radio" name="40" value="F1" required> Gentle<br>
 <input type="radio" name="40" value="T2"> Firm<br>
 <br>
-<input type="radio" name="41" value="J2"> Systematic<br>
+<input type="radio" name="41" value="J2" required> Systematic<br>
 <input type="radio" name="41" value="P2"> Casual<br>
 <br>
-<input type="radio" name="42" value="S1"> Certainty<br>
+<input type="radio" name="42" value="S1" required> Certainty<br>
 <input type="radio" name="42" value="N2"> Theory<br>
 <br>
-<input type="radio" name="43" value="I1"> Calm<br>
+<input type="radio" name="43" value="I1" required> Calm<br>
 <input type="radio" name="43" value="E1"> Lively<br>
 <br>
-<input type="radio" name="44" value="T1"> Justice<br>
+<input type="radio" name="44" value="T1" required> Justice<br>
 <input type="radio" name="44" value="F2"> Mercy<br>
 <br>
-<input type="radio" name="45" value="N0"> Fascinating<br>
+<input type="radio" name="45" value="N0" required> Fascinating<br>
 <input type="radio" name="45" value="S2"> Sensible<br>
 <br>
-<input type="radio" name="46" value="T2"> Firm-minded<br>
+<input type="radio" name="46" value="T2" required> Firm-minded<br>
 <input type="radio" name="46" value="F0"> Warm hearted<br>
 <br>
-<input type="radio" name="47" value="F1"> Feeling<br>
+<input type="radio" name="47" value="F1" required> Feeling<br>
 <input type="radio" name="47" value="T2"> Thinking<br>
 <br>
-<input type="radio" name="48" value="S1"> Literal<br>
+<input type="radio" name="48" value="S1" required> Literal<br>
 <input type="radio" name="48" value="N1"> Figurative<br>
 <br>
-<input type="radio" name="49" value="T2"> Anticipation<br>
+<input type="radio" name="49" value="T2" required> Anticipation<br>
 <input type="radio" name="49" value="F1"> Compassion<br>
 <br>
-<input type="radio" name="50" value="T2"> Hard<br>
+<input type="radio" name="50" value="T2" required> Hard<br>
 <input type="radio" name="50" value="F0"> Soft<br>
 <br>
-<button onclick="return handleClick();" type="submit">Submit</button>
+<button type="submit">Submit</button>
 </form>
 {% endblock %}
+
+
