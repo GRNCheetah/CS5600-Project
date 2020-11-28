@@ -7,14 +7,22 @@ CHECKBOX = '\t<input type="checkbox" name="{}" value="{}"{}> {} <br>\n'
 
 with open("questions.txt") as file:
     q_num = 1
-    html = '''<form name="quiz" method="POST">
-<h3><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h3>'''
+    html = '''{% extends 'base.html' %}
+
+{% block title %}Quiz{% endblock %}
+{% block nav_quiz %}active{% endblock %}
+
+{% block content %}
+
+<form name="quiz" method="POST">
+<h3><b>Part 1: </b> Which answer comes closer to telling how you usually feel or act?</h3>
+<div class="quiz_wrapper">\n'''
     while q_num <= 25:
         question = file.readline().strip()
         q1 = file.readline().strip().split(" ")
         q2 = file.readline().strip().split(" ")
 
-        html += "<h3>" + question + "</h3>\n" + \
+        html += "<div class='question'>" + question + ":</div>\n<div class='answer'>\n" + \
                 RADIO1.format(q_num, q1[0], " required", " ".join(q1[1:])) + \
                 RADIO1.format(q_num, q2[0], "", " ".join(q2[1:]))
 
@@ -22,13 +30,13 @@ with open("questions.txt") as file:
             q3 = file.readline().strip().split(" ")
             html += RADIO1.format(q_num, q2[0], "", " ".join(q3[1:]))
 
-        html += "\n"
+        html += "</div>\n"
 
         file.readline()
         
         q_num += 1
 
-    html += '<h3><i>For this question, select all answers that are true.</i></h3>'
+    html += '</div>\n<h3><i>For this question, select all answers that are true.</i></h3>'
 
     question = file.readline().strip()
     q1 = file.readline().strip().split(" ")
@@ -36,7 +44,7 @@ with open("questions.txt") as file:
     q3 = file.readline().strip().split(" ")
     file.readline()
 
-    html += "<h3>" + question + "</h3>\n" + \
+    html += question + "\n" + \
             CHECKBOX.format(q_num, q1[0], "", " ".join(q1[1:])) + \
             CHECKBOX.format(q_num, q2[0], "", " ".join(q2[1:])) + \
             CHECKBOX.format(q_num, q3[0], "", " ".join(q3[1:])) + "\n"
@@ -62,9 +70,9 @@ with open("questions.txt") as file:
         
         q_num += 1
 
-    html += '<button type="submit">Submit</button></form>'
+    html += '<button type="submit">Submit</button></form>\n{% endblock %}'
     
 
-with open("out.html", "w") as file:
+with open("quiz.html", "w") as file:
     file.write(html)
 
