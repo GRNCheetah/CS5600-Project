@@ -1,21 +1,28 @@
+:root {
+    --main: #DA4454;
+    --bg: #F4DD7F;
+    --fonts: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 body {
-    background-color: #FDF6DA;
+    background-color: var(--bg);
+    margin: 0;
 }
 
 h1 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: var(--fonts);
     text-align: center;
     color: #27353D; 
 }
 
 p {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: var(--fonts);
     color: #27353D; 
 }
 
 h3 {
     color: #27353D;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: var(--fonts);
 }
 
 .navbar {
@@ -23,7 +30,7 @@ h3 {
     margin: 0;
     padding: 0;
     background-color: #96B590;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: var(--fonts);
     font-size: x-large;
 }
 
@@ -62,10 +69,18 @@ h3 {
     text-decoration: none;
 }
 
-.footer {
+header {
+    background-color: var(--main);
+    padding: .5%;
+}
+
+footer {
+    background-color: var(--main);
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+    padding: .2%;
     text-align: center;
+    font-family: var(--fonts);
 }
