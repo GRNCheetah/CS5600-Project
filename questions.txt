@@ -1,0 +1,177 @@
+When you go somewhere for the day, would you rather
+J2 Plan what you will do and when, or 
+P2 Just go! 
+
+If you were a teacher, would you rather teach
+S2 Facts-based courses, or 
+N2 Courses involving opinion or theory? 
+
+Are you usually
+E2 A "good mixer" with groups of people, or 
+I2 Rather quiet and reserved? 
+
+Do you more often let
+F1 Your heart rule your head, or 
+T2 Your head rule your heart? 
+
+In doing something that many other people would do, would you rather 
+N1 Invent a way of your own, or 
+S1 Do it in the accepted way? 
+
+Among your friends are you 
+E2 Full of news about everybody, or 
+I1 One of the last to hear what is going on? 
+
+Does the idea of making a list of what you should get done over a weekend 
+J1 Help you, or 
+P1 Stress you, or 
+P1 Positively depress you? 
+
+When you have a special job to do, do you like to 
+J1 Organize it carefully before you start, or  
+P2 Find out what is necessary as you go along? 
+
+Do you tend to have
+E2 Broad friendships with many different people, or 
+I1 Deep friendships with very few people? 
+
+Do you admire more the people who are 
+S1 Normal-acting to never make themselves the center of attention, or
+N2 Too original and individual to care whether they are the center of attention or not? 
+
+Do you prefer to
+J2 Arrange parties well in advance, or
+P1 Be free to do whatever looks like fun when the time comes?
+
+Do you usually get along better with
+S1 Realistic people, or
+N2 Imaginative people?
+
+When you are with a group of people, would you usually rather
+E1 Join in the talk of the group or
+I2 Stand back and listen first?
+
+Is it a higher compliment to be called
+F1 A person of real feeling, or
+T2 A consistently reasonable person?
+
+In reading for pleasure, do you
+N0 Enjoy odd or original ways of saying things, or
+S1 Like writers to say exactly what they mean?
+
+Do you
+E2 Talk easily to almost anyone for as long as you have to, or
+I2 Find a lot to say only to certain people or under certain conditions?
+
+Does following a schedule
+J2 Appeal to you, or
+P2 Cramp you?
+
+When it is settled well in advance that you will do a certain thing at a certain time, do you find it
+J1 Nice to be able to plan accordingly, or
+P1 A little unpleasant to be tied down?
+
+Are you more successful
+J1 At following a carefully worked out plan, or
+P1 At dealing with the unexpected and seeing what quickly should be done?
+
+Should you rather be considered
+S2 A practical person, or
+N2 An out-of-the-box-thinking person?
+
+In a large group, do you more often
+E2 Introduce others, or
+I2 Get introduced?
+
+Do you usually
+F2 Value emotion more than logic, or
+T2 Value logic more than feelings?
+
+Would you rather have as a friend
+N1 Someone who is always coming up with new ideas, or
+S2 Someone who has both feet on the ground?
+
+Can the new people you meet tell what you are interested in
+E1 Right away, or
+I1 Only after they really get to know you?
+
+Do you usually
+E1 Show your feelings freely, or
+I0 Keep your feelings to yourself?
+
+In your daily work, do you
+J1 Usually plan your work so you won't need to work under pressure, or
+P1 Rather enjoy an emergency that makes you work against time, or
+J0 Hate to work under pressure?
+
+J2 Scheduled
+P2 Unplanned
+
+S2 Facts
+N1 Ideas
+
+I2 Quiet
+E2 Hearty
+
+T2 Convincing
+F1 Touching
+
+N0 Imaginative
+S2 Matter-of-fact
+
+T1 Benefits
+F1 Blessings
+
+F0 Peacemaker
+T2 Judge
+
+J2 Systematic
+P2 Spontaneous
+
+S2 Statement
+N1 Concept
+
+I1 Reserved
+E2 Talkative
+
+T1 Analyze
+F2 Sympathize
+
+N0 Create
+S2 Make
+
+T1 Determined
+F1 Devoted
+
+F1 Gentle
+T2 Firm
+
+J2 Systematic
+P2 Casual
+
+S1 Certainty
+N2 Theory
+
+I1 Calm
+E1 Lively
+
+T1 Justice
+F2 Mercy
+
+N0 Fascinating
+S2 Sensible
+
+T2 Firm-minded
+F0 Warm hearted
+
+F1 Feeling
+T2 Thinking
+
+S1 Literal
+N1 Figurative
+
+T2 Anticipation
+F1 Compassion
+
+T2 Hard
+F0 Soft

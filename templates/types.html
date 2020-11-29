@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Personalities{% endblock %}
+{% block nav_personalities %}active{% endblock %}
+
+
+{% block content %}
+<h2>{{ p_type + " - " + info[0] }}</h2>
+<p>{{ info[1] }}</p>
+<ul>
+    <li>
+    {% if p_type[0] == "E" %}
+    E - Extrovert: 
+    {% else %}
+    I - Introvert:
+    {% endif %}
+    </li>
+    
+    <li>
+    {% if p_type[1] == "S" %}
+    S - Sensing:
+    {% else %}
+    N - Intuition:
+    {% endif %}
+    </li>
+
+    <li>
+    {% if p_type[2] == "T" %}
+    T - Thinking:
+    {% else %}
+    F - Feeling:
+    {% endif %}
+    </li>
+    
+    <li>
+    {% if p_type[3] == "J" %}
+    J - Judging:
+    {% else %}
+    P - Perceiving:
+    {% endif %}
+    </li>
+</ul>
+
+<a href="/personalities/main">To Personalities page</a>
+
+{% endblock %}

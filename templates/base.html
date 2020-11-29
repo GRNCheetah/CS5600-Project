@@ -8,23 +8,52 @@
 </head>
     
 <body>
-<h1>Quiz Time</h1>
+
+<header>
+    <h1>Myers Briggs Personality Quiz</h1>
+</header>
+    
 
 <nav>
-    <ul>
-        <li><a href="/" class="{% block nav_index %}{% endblock %}">Home</a></li>
-        <li><a href="/quiz" class="{% block nav_quiz %}{% endblock %}">Quiz</a></li>
-        <li><a href="/data" class="{% block nav_data %}{% endblock %}">Data</a></li>
-        <li><a href="/results" class="{% block nav_results %}{% endblock %}">Results</a></li>
+    <ul class="navbar">
+        <li class="navbar_li"><a href="/" class="{% block nav_index %}{% endblock %} navbar_a">Home</a></li>
+        <li class="navbar_li"><a href="/quiz" class="{% block nav_quiz %}{% endblock %} navbar_a">Quiz</a></li>
+        <li class="navbar_li"><a href="/data" class="{% block nav_data %}{% endblock %} navbar_a">Data</a></li>
+        <li class="navbar_li"><a href="/results" class="{% block nav_results %}{% endblock %} navbar_a">Results</a></li>
+        <div class="dropdown">
+            <li class="navbar_li"><a href="/personalities/main" class="{% block nav_personalities %}{% endblock %} navbar_a">Personalities</a></li>
+            <div class="dropdown-content">
+                <a href="/personalities/entj">ENTJ</a>
+                <a href="/personalities/intj">INTJ</a>
+                <a href="/personalities/entp">ENTP</a>
+                <a href="/personalities/intp">INTP</a>
+                <a href="/personalities/enfj">ENFJ</a>
+                <a href="/personalities/infj">INFJ</a>
+                <a href="/personalities/enfp">ENFP</a>
+                <a href="/personalities/infp">INFP</a>
+                <a href="/personalities/estj">ESTJ</a>
+                <a href="/personalities/istj">ISTJ</a>
+                <a href="/personalities/esfj">ESFJ</a>
+                <a href="/personalities/isfj">ISFJ</a>
+                <a href="/personalities/estp">ESTP</a>
+                <a href="/personalities/istp">ISTP</a>
+                <a href="/personalities/esfp">ESFP</a>
+                <a href="/personalities/isfp">ISFP</a>
+            </div>
+        </div>
         <li><a href="/login" class="{% block nav_login %}{% endblock %}">Login</a></li>
         <li><a href="/logout" class="{% block nav_logout %}{% endblock %}">Logout</a></li>
     </ul>    
 </nav>
 
+<div class="body_wrapper">
 {% block content %}{% endblock %}
-
-
-<div class="footer">Made by Team</div>
+</div>
+<footer>
+    Made by Team "Two Peas and a Pod"
+</footer>
 </body>
+
+
 
 </html>

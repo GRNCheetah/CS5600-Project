@@ -1,45 +1,402 @@
+:root {
+  --main: #405c70;
+  --bg: #b1a296;
+  --font_col: ;
+  --nav_col: #7395ae;
+  --nav_active_col: #5d5c61;
+  --nav_hover_col: #379683;
+  --fonts: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* Generic for all the site */
 body {
-    background-color: #FDF6DA;
+  background-color: var(--bg);
+  margin: 0;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #96B590;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: x-large;
-}
-
-li {
-    display: inline;
-}
-
-li a {
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: #FDF6DA;
+.body_wrapper {
+  padding: 20px 15px;
 }
 
 h1 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-    color: #27353D; 
+  font-family: var(--fonts);
+  text-align: center;
+  color: var(--font_col);
 }
 
 p {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #27353D; 
+  font-family: var(--fonts);
+  color: var(--font_col);
+}
+
+h3 {
+  font-family: var(--fonts);
+  color: var(--font_col);
+}
+
+header {
+  /* background-color: var(--main); */
+  background: rgb(85, 122, 149);
+  background: linear-gradient(
+    to bottom,
+    rgba(64, 92, 112, 1) 0%,
+    rgba(115, 149, 174, 1) 100%
+  );
+  padding: 5px;
+}
+
+footer {
+  background-color: var(--main);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0.2%;
+  text-align: center;
+  font-family: var(--fonts);
+}
+
+/* For the nav bar */
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  background-color: var(--nav_col);
+  font-family: var(--fonts);
+  font-size: x-large;
+}
+
+.navbar_li {
+  display: inline;
+}
+
+div.dropdown {
+  display: inline-block;
+}
+
+.navbar_a {
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--font_col);
+  border-radius: 15px;
+}
+
+.navbar_a:hover,
+.dropdown:hover {
+  background-color: var(--nav_hover_col);
 }
 
 .active {
-    background-color: #635C4B;
+  background-color: var(--nav_active_col);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin: 0px;
+  background-color: var(--nav_hover_col);
+  width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: var(--font_col);
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--nav_active_col);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  overflow: visible;
+}
+
+/* Quiz Grids */
+.quiz-part-1-grid {
+  display: grid;
+  margin: 25px;
+  grid-template-columns: 600px 600px;
+  background-color: var(--bg);
+  grid-row-gap: 20px;
+  justify-content: center;
+}
+
+.question {
+  color: var(--font_col);
+  text-align: left;
+  background-color: var(--nav_col);
+  vertical-align: text-top;
+  font-family: var(--fonts);
+  font-size: larger;
+  padding: 5px;
+  border-top-left-radius: 10px;
+  box-shadow: 3px 3px 3px #000000;
+}
+
+.answer {
+  color: var(--font_col);
+  text-align: left;
+  background-color: var(--nav_col);
+  font-family: var(--fonts);
+  padding: 5px;
+  border-top-right-radius: 10px;
+  box-shadow: 3px 3px 3px #000000;
+}
+
+.quiz-part-2-grid {
+  display: grid;
+  margin: 25px;
+  grid-template-columns: 400px;
+  background-color: var(--bg);
+  grid-row-gap: 20px;
+  justify-content: center;
 }
 
 
-h3 {
-    color: #27353D;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+/* Personality Grids */
+.wrapper {
+  display: grid;
+  grid-template-columns: 250px 250px 250px 250px;
+  background-color: var(--bg);
+  grid-gap: 10px;
+  justify-content: center;
 }
 
+.types {
+  text-decoration: none;
+  color: var(--font_col);
+}
+
+.box {
+  background-color: var(--nav_col);
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  text-align: center;
+}
+
+/* Used for the Data page */
+.datagraph {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 50%;
+}
+
+.datagraph img {
+  width: 100%;
+}
+
+.center {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* For the Quiz page general */
+.quiz-part-1 {
+  padding: 20px;
+}
+
+.quiz-part-2 {
+  padding: 20px;
+  justify-content: center;
+}
+
+form {
+  margin-bottom: 100px;
+}
+
+.submit-button {
+  background-color: var(--nav_col);
+  color: var(--font_col);
+  font-size: 24px;
+  border-radius: 15px;
+  padding: 15px 40px;
+  border: 5px solid var(--main);
+  box-shadow: 3px 3px 3px #000000;
+}
+
+.submit-button:hover {
+  background-color: var(--nav_hover_col);
+}
+
+/* For the Quiz page part 1 */
+.part-1-radio-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.part-1-radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.radiobutt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.part-1-radio-container:hover input ~ .radiobutt {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.part-1-radio-container input:checked ~ .radiobutt {
+  background-color: var(--nav_active_col);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radiobutt:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.part-1-radio-container input:checked ~ .radiobutt:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.part-1-radio-container .radiobutt:after {
+     top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* For the Quiz page part 2 */
+.radio-toolbar {
+  margin: 7px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-content: center;
+}
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #ddd;
+  padding: 10px 10px;
+  font-family: var(--fonts);
+  color: var(--font_col);
+  font-size: 16px;
+  border: 2px solid #444;
+  border-radius: 4px;
+  margin: 0 5px;
+  width: 125px;
+  text-align: center;
+  box-shadow: 3px 3px 3px #000000;
+}
+
+.radio-toolbar input[type="radio"]:invalid + label {
+  border-color: #ff0000;
+}
+
+.radio-toolbar label:hover {
+  background-color: var(--nav_hover_col);
+}
+
+.radio-toolbar input[type="radio"]:focus + label {
+  border: 2px dashed #444;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: var(--nav_col);
+  border-color: var(--nav_active_col);
+}
+
+/* That one checkbox question needs all this bs */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  /* font-size: 22px; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--nav_active_col);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

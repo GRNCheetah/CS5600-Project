@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS submissions;
+/*DROP TABLE IF EXISTS submissions;*/
 
-CREATE TABLE submissions (
+CREATE TABLE IF NOT EXISTS submissions (
   id INTEGER PRIMARY KEY,
   userID TEXT,
   sumE INTEGER NOT NULL,
