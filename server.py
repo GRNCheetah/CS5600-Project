@@ -2,7 +2,7 @@
 import hashlib
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
-from flask import Blueprint, Flask, render_template, request, Response, redirect, url_for
+from flask import Blueprint, Flask, render_template, request, Response, redirect, url_for, flash
 import sqlite3
 from init_db import *
 import os
@@ -336,6 +336,9 @@ def quiz():
 
             # Send to database
             conn = get_db_connection()
+            prev_submission = conn.execute("SELECT * FROM submissions WHERE userID=\"{}\";".format(current_user.username)).fetchall()
+            if prev_submission != []:
+                conn.execute("DELETE FROM submissions WHERE userID=\"{}\";".format(current_user.username))
             conn.execute("INSERT INTO submissions (userID, sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         (u_id, result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
             conn.commit()
@@ -347,6 +350,7 @@ def quiz():
             if current_user.is_authenticated:
                 return render_template("quiz.html")
             else:
+                flash('You must be logged in before taking the personality quiz!')
                 return redirect(url_for('login'))
     except Exception as e:
         print("error:", e)
@@ -359,13 +363,13 @@ def results(data=None):
     # and display it on the results page
     if current_user.is_authenticated:
         conn = get_db_connection()
-        posts = conn.execute("SELECT * FROM submissions WHERE userID=\"" + current_user.username + "\";").fetchall()
+        posts = conn.execute("SELECT * FROM submissions WHERE userID=\"{}\";".format(current_user.username)).fetchall()
         conn.close()
 
         # Check if the current user has a submission.
         # If not, display the default page
         if posts != []:
-            return render_template("results.html", user_result=posts)
+            return render_template("results.html", user_result=posts[0])
 
     return render_template("results.html", user_result={})
 
