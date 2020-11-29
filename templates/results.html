@@ -7,7 +7,7 @@
 
 {% if user_result != {} %}
 
-<h2 style="text-align: center;"> Personality Type: <a href="personalities/{{ user_result['personalityType'].lower()}}">{{ user_result['personalityType'] }}</a></h2>
+<h2 style="text-align: center;"> Personality Type: <a style="text-decoration: none;" href="personalities/{{ user_result['personalityType'].lower()}}">{{ user_result['personalityType'] }}</a></h2>
 <br>
 <div style="text-align: center;">
     <p>You scored <b>{{ user_result['sumE'] }}</b> points in the <b>Extrovert</b> category.</p>
