@@ -159,7 +159,6 @@ div.dropdown {
   justify-content: center;
 }
 
-
 /* Personality Grids */
 .wrapper {
   display: grid;
@@ -284,12 +283,12 @@ form {
 
 /* Style the indicator (dot/circle) */
 .part-1-radio-container .radiobutt:after {
-     top: 6px;
-    left: 6px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
 }
 
 /* For the Quiz page part 2 */
