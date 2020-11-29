@@ -380,7 +380,17 @@ def data():
     posts = conn.execute('SELECT * FROM submissions').fetchall()
     conn.close()
     print(posts)
-    return render_template("data.html", posts=posts)
+
+    if current_user.is_authenticated:
+        conn = get_db_connection()
+        posts = conn.execute("SELECT * FROM submissions WHERE userID=\"{}\";".format(current_user.username)).fetchall()
+        conn.close()
+
+        # Check if the current user has a submission. If so, display on data page as well.
+        if posts != []:
+            return render_template("data.html", posts=posts, user_result=posts[0])
+
+    return render_template("data.html", posts=posts, user_result={})
 
 @app.route("/personalities/<p_type>")
 def personalities(p_type=""):

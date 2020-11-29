@@ -4,25 +4,24 @@
 {% block nav_results %}active{% endblock %}
 
 {% block content %}
-<h2>Quiz Results</h2>
 
 {% if user_result != {} %}
 
-<h2>Your results!</h2>
-
-<p> Personality Type: {{ user_result['personalityType'] }}</p>
-<p> {{ user_result['sumE'] }} &nbsp;
-    {{ user_result['sumI'] }} &nbsp;
-    {{ user_result['sumS'] }} &nbsp;
-    {{ user_result['sumN'] }} &nbsp;
-    {{ user_result['sumT'] }} &nbsp;
-    {{ user_result['sumF'] }} &nbsp;
-    {{ user_result['sumJ'] }} &nbsp;
-    {{ user_result['sumP'] }}</p>
-<hr>
+<h2 style="text-align: center;"> Personality Type: <a style="text-decoration: none;" href="personalities/{{ user_result['personalityType'].lower()}}">{{ user_result['personalityType'] }}</a></h2>
+<br>
+<div style="text-align: center;">
+    <p>You scored <b>{{ user_result['sumE'] }}</b> points in the <b>Extrovert</b> category.</p>
+    <p>You scored <b>{{ user_result['sumI'] }}</b> points in the <b>Introvert</b> category.</p>
+    <p>You scored <b>{{ user_result['sumS'] }}</b> points in the <b>Sensor</b> category.</p>
+    <p>You scored <b>{{ user_result['sumN'] }}</b> points in the <b>Intuitive</b> category.</p>
+    <p>You scored <b>{{ user_result['sumT'] }}</b> points in the <b>Thinker</b> category.</p>
+    <p>You scored <b>{{ user_result['sumF'] }}</b> points in the <b>Feeler</b> category.</p>
+    <p>You scored <b>{{ user_result['sumJ'] }}</b> points in the <b>Judger</b> category.</p>
+    <p>You scored <b>{{ user_result['sumP'] }}</b> points in the <b>Perceiver</b> category.</p>
+</div>
 {% else %}
 
-<p>You should not be here yet. Take the <a href="/quiz">Quiz</a>!</p>
+<h2 style="text-align: center;">You should not be here yet. Take the <a href="/quiz">Quiz</a>!</h2>
 {% endif %}
 
 
