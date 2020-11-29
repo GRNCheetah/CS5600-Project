@@ -3,7 +3,14 @@
 RADIO1 = '\t<input type="radio" name="{}" value="{}"{}> {} <br>\n'
 RADIO2 = '\t<input type="radio" id="{}" name="{}" value="{}"{}>\n'
 LABEL = '\t<label for="{}">{}</label>\n'
-CHECKBOX = '\t<input type="checkbox" name="{}" value="{}"{}> {} <br>\n'
+PART1_RADIO = '''\t<label class="part-1-radio-container"> {} <br>
+\t\t<input type="radio" name="{}" value="{}" {}>
+\t\t<span class="radiobutt"></span>
+\t</label>'''
+CHECKBOX = '<label class="checkbox-container">{}\n\
+\t<input type="checkbox" name="{}" value="{}">\n\
+\t<span class="checkmark"></span>\n\
+</label>\n'
 
 with open("questions.txt") as file:
     q_num = 1
@@ -24,12 +31,12 @@ with open("questions.txt") as file:
         q2 = file.readline().strip().split(" ")
 
         html += "<div class='question'>" + question + ":</div>\n<div class='answer'>\n" + \
-                RADIO1.format(q_num, q1[0], " required", " ".join(q1[1:])) + \
-                RADIO1.format(q_num, q2[0], "", " ".join(q2[1:]))
+                PART1_RADIO.format(" ".join(q1[1:]), q_num, q1[0], " required") + \
+                PART1_RADIO.format(" ".join(q2[1:]), q_num, q2[0], "")
 
         if q_num == 7:
             q3 = file.readline().strip().split(" ")
-            html += RADIO1.format(q_num, q2[0], "", " ".join(q3[1:]))
+            html += PART1_RADIO.format(" ".join(q3[1:]), q_num, q3[0], "")
 
         html += "</div>\n"
 
@@ -46,9 +53,9 @@ with open("questions.txt") as file:
     file.readline()
 
     html += question + "</div>\n<div class='answer'>\n" + \
-            CHECKBOX.format(q_num, q1[0], "", " ".join(q1[1:])) + \
-            CHECKBOX.format(q_num, q2[0], "", " ".join(q2[1:])) + \
-            CHECKBOX.format(q_num, q3[0], "", " ".join(q3[1:])) + "</div>\n"
+            CHECKBOX.format(" ".join(q1[1:]), q_num, q1[0]) + \
+            CHECKBOX.format(" ".join(q2[1:]), q_num, q2[0]) + \
+            CHECKBOX.format(" ".join(q3[1:]), q_num, q3[0]) + "</div>\n"
     
     q_num += 1
 
