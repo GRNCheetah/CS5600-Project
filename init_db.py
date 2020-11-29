@@ -1,4 +1,5 @@
 import sqlite3
+from server import db
 
 DB_FNAME = 'database.db'
 SCHEME_FNAME = 'schema.sql'
@@ -22,3 +23,4 @@ def get_db_connection():
 
 if __name__ == "__main__":
     init_tables()
+

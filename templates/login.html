@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+{% block nav_login %}active{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated: %}
+
+<h3> {{ user.username }} is logged in </h3>
+
+{% else %}
+
+<h3> {{ error }} </h3>
+
+<form name="login" autocomplete="off" method="POST">
+
+  <h3>Username</h3>
+  <input name="username" type="text" required>
+  <h3>Password</h3>
+  <input name="password" type="password" required autocomplete="off"><br><br>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<a href="/new_user" class="{% block nav_new_user %}{% endblock %}">Need an account?</a>
+
+{% endif %}
+
+{% endblock content %}
