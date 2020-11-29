@@ -1,5 +1,4 @@
 import sqlite3
-from server import db
 
 DB_FNAME = 'database.db'
 SCHEME_FNAME = 'schema.sql'
@@ -11,7 +10,7 @@ def init_tables():
     with open(SCHEME_FNAME) as f:
         connection.executescript(f.read())
 
-    cur = connection.cursor()
+    #cur = connection.cursor()
 
     connection.commit()
     connection.close()

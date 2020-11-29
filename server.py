@@ -23,6 +23,10 @@ app.secret_key = os.urandom(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SECRET_KEY'] = 'secretkey'
 db = SQLAlchemy(app)
+db.create_all()
+
+# Init Myers Briggs results database
+init_tables()
 
 # Initialize Login Manager
 login_manager = LoginManager()
@@ -99,13 +103,8 @@ def logout():
         logout_user()
         return render_template("logout.html", user=tmp_user)
 
+    # Else we redirect to login, bc they cant logout if never logged in
     return redirect(url_for('login'))
-
-
-NUM_QUESTIONS = 50
-
-conn = init_tables()
-
 
 
 @app.route('/summary_plot.png')
@@ -259,11 +258,12 @@ def update_trait_graph():
 def home():
     return render_template("index.html")
 
-
+NUM_QUESTIONS = 50
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     try:
         if request.method == "POST":
+            # This is when the submit button is pushed, user is authenticated already
             # Do calcs on answers starting here
             answers = []
             for answer in range (1, NUM_QUESTIONS+1):
@@ -342,7 +342,12 @@ def quiz():
             conn.close()
             return redirect(url_for('results'))
         else:
-            return render_template("quiz.html")
+            # This handles the GET request when a user first tries to get to the page
+            # Here we send them to the login page if they are not authenticated (logged in)
+            if current_user.is_authenticated:
+                return render_template("quiz.html")
+            else:
+                return redirect(url_for('login'))
     except Exception as e:
         print("error:", e)
         return render_template("quiz.html", error="something")
@@ -360,9 +365,9 @@ def results(data=None):
         # Check if the current user has a submission.
         # If not, display the default page
         if posts != []:
-            return render_template("results.html", posts=posts)
+            return render_template("results.html", user_result=posts)
 
-    return render_template("results.html", posts={})
+    return render_template("results.html", user_result={})
 
 
 @app.route("/data")
