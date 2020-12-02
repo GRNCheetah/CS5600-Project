@@ -16,8 +16,8 @@ Navigate to `localhost:5000` in your browser to view the application
 
 ## Setting up the Database
 
-To set up an empty database (`database.db`), rerun
+To set up empty databases (`database.db` and `users.db`), rerun
 
 `$ python init_db.py`
 
-The `database.db` file will be updated when clients use the application.
+The database files will be updated when clients use the application.
