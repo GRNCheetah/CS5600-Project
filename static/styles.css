@@ -16,6 +16,7 @@ body {
 
 .body_wrapper {
   padding: 20px 15px;
+  font-family: var(--fonts);
 }
 
 h1 {
@@ -398,4 +399,9 @@ form {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.home-image {
+  max-height: 600px;
+  padding: 10px;
 }
