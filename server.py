@@ -33,6 +33,13 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+# This injects whatever variables are in the dictionary
+# into all templates
+@app.context_processor
+def injectVars():
+    return dict(user=current_user)
+
+
 # Potential TODO: Get the submissions stuff set up on SQL alchemy for
 # consistency and easy of use throughout the program
 class User(UserMixin, db.Model):
@@ -64,9 +71,9 @@ def new_user():
 
             return redirect(url_for('login'))
         else:
-            return render_template("new_user.html", user=current_user, error="Username already in use!")
+            return render_template("new_user.html", error="Username already in use!")
 
-    return render_template("new_user.html", user=current_user)
+    return render_template("new_user.html")
 
 
 @login_manager.user_loader
@@ -89,11 +96,11 @@ def login():
             # Login if hashes match
             if new_hash_pass == user.password:
                 login_user(user)
-                return render_template("login.html", user=current_user)
+                return render_template("login.html")
 
-        return render_template("login.html", user=current_user, error="Incorrect Username or Password")
+        return render_template("login.html", error="Incorrect Username or Password")
 
-    return render_template("login.html", user=current_user)
+    return render_template("login.html")
 
 
 @app.route('/logout')
