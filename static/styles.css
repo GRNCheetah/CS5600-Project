@@ -399,3 +399,8 @@ form {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.home-image {
+  max-height: 600px;
+  padding: 10px;
+}
