@@ -373,20 +373,20 @@ def results(data=None):
         posts = conn.execute("SELECT * FROM submissions WHERE userID=\"{}\";".format(current_user.username)).fetchall()
         conn.close()
 
-        percentages = []
-        # Calculate percentages.
-        percentages.append(round(100 * posts[0]['SumE'] / float(posts[0]['SumE'] + posts[0]['SumI'])))
-        percentages.append(round(100 * posts[0]['SumI'] / float(posts[0]['SumE'] + posts[0]['SumI'])))
-        percentages.append(round(100 * posts[0]['SumS'] / float(posts[0]['SumS'] + posts[0]['SumN'])))
-        percentages.append(round(100 * posts[0]['SumN'] / float(posts[0]['SumS'] + posts[0]['SumN'])))
-        percentages.append(round(100 * posts[0]['SumT'] / float(posts[0]['SumT'] + posts[0]['SumF'])))
-        percentages.append(round(100 * posts[0]['SumF'] / float(posts[0]['SumT'] + posts[0]['SumF'])))
-        percentages.append(round(100 * posts[0]['SumJ'] / float(posts[0]['SumJ'] + posts[0]['SumP'])))
-        percentages.append(round(100 * posts[0]['SumP'] / float(posts[0]['SumJ'] + posts[0]['SumP'])))
-
         # Check if the current user has a submission.
         # If not, display the default page
         if posts != []:
+            percentages = []
+            # Calculate percentages.
+            percentages.append(round(100 * posts[0]['SumE'] / float(posts[0]['SumE'] + posts[0]['SumI'])))
+            percentages.append(round(100 * posts[0]['SumI'] / float(posts[0]['SumE'] + posts[0]['SumI'])))
+            percentages.append(round(100 * posts[0]['SumS'] / float(posts[0]['SumS'] + posts[0]['SumN'])))
+            percentages.append(round(100 * posts[0]['SumN'] / float(posts[0]['SumS'] + posts[0]['SumN'])))
+            percentages.append(round(100 * posts[0]['SumT'] / float(posts[0]['SumT'] + posts[0]['SumF'])))
+            percentages.append(round(100 * posts[0]['SumF'] / float(posts[0]['SumT'] + posts[0]['SumF'])))
+            percentages.append(round(100 * posts[0]['SumJ'] / float(posts[0]['SumJ'] + posts[0]['SumP'])))
+            percentages.append(round(100 * posts[0]['SumP'] / float(posts[0]['SumJ'] + posts[0]['SumP'])))
+
             return render_template("results.html", user_result=posts[0], percentages=percentages)
 
     return render_template("results.html", user_result={}, percentages={})
