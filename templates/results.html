@@ -11,18 +11,54 @@
 <br>
 <div style="text-align: center;">
     <div class="results-wrapper">
-        <p id="results-item-left">{{ percentages[0] }}% Extroverted</p>
+        {% if percentages[0] >= percentages[1] %}
+            <b><p id="results-item-left">{{ percentages[0] }}% Extroverted</p></b>
+        {% else %}
+            <p id="results-item-left">{{ percentages[0] }}% Extroverted</p>
+        {% endif %}
         <p>-</p>
-        <p id="results-item-right">{{ percentages[1] }}% Introverted</p>
-        <p id="results-item-left">{{ percentages[2] }}% Sensor</p>
+        {% if percentages[0] < percentages[1] %}
+            <b><p id="results-item-right">{{ percentages[1] }}% Introverted</p></b>
+        {% else %}
+            <p id="results-item-right">{{ percentages[1] }}% Introverted</p>
+        {% endif %}
+
+        {% if percentages[2] >= percentages[3] %}
+            <b><p id="results-item-left">{{ percentages[2] }}% Sensor</p></b>
+        {% else %}
+            <p id="results-item-left">{{ percentages[2] }}% Sensor</p>
+        {% endif %}
         <p>-</p>
-        <p id="results-item-right">{{ percentages[3] }}% Intuitive</p>
-        <p id="results-item-left">{{ percentages[4] }}% Thinker</p>
+        {% if percentages[2] < percentages[3] %}
+            <b><p id="results-item-right">{{ percentages[3] }}% Intuitive</p></b>
+        {% else %}
+            <p id="results-item-right">{{ percentages[3] }}% Intuitive</p>
+        {% endif %}
+
+        {% if percentages[4] >= percentages[5] %}
+            <b><p id="results-item-left">{{ percentages[4] }}% Thinker</p></b>
+        {% else %}
+            <p id="results-item-left">{{ percentages[4] }}% Thinker</p>
+        {% endif %}
         <p>-</p>
-        <p id="results-item-right">{{ percentages[5] }}% Feeler</p>
-        <p id="results-item-left">{{ percentages[6] }}% Judger</p>
+        {% if percentages[4] < percentages[5] %}
+            <b><p id="results-item-right">{{ percentages[5] }}% Feeler</p></b>
+        {% else %}
+            <p id="results-item-right">{{ percentages[5] }}% Feeler</p>
+        {% endif %}
+
+        {% if percentages[6] >= percentages[7] %}
+            <b><p id="results-item-left">{{ percentages[6] }}% Judger</p></b>
+        {% else %}
+            <p id="results-item-left">{{ percentages[6] }}% Judger</p>
+        {% endif %}
         <p>-</p>
-        <p id="results-item-right">{{ percentages[7] }}% Perceiver</p>
+        {% if percentages[6] < percentages[7] %}
+            <b><p id="results-item-right">{{ percentages[7] }}% Perceiver</p></b>
+        {% else %}
+            <p id="results-item-right">{{ percentages[7] }}% Perceiver</p>
+        {% endif %}
+
     </div>
 </div>
 <br>
