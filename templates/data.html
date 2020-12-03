@@ -7,7 +7,17 @@
 <div class="center">
     <br>
     <h2 class=>How do you compare to everybody else?</h2>
+
+    {% if user_result != {} %}
+    
+    <p style="text-align: center;"> Your personality type is <a style="text-decoration: none;"
+            href="personalities/{{ user_result['personalityType'].lower()}}">{{ user_result['personalityType'] }}</a>.</p>
+
+    {% else %}
+    
     <p>If you haven't taken the Myers-Briggs Personality Quiz yet, you should <a href="quiz">take it now</a>!</p>
+
+    {% endif %}
 
     <h3>What are the most dominant traits?</h3>
     <p>The following graph demonstrates which individual traits were <b>most popular</b> and <b>least popular</b>. Each color represents two opposing traits.</p>

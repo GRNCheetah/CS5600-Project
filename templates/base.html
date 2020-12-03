@@ -41,6 +41,11 @@
                 <a href="/personalities/isfp">ISFP</a>
             </div>
         </div>
+        {% if user.is_authenticated: %}
+          <li class="navbar_li"><a href="/logout" class="{% block nav_logout %}{% endblock %} navbar_a">Logout</a></li>
+        {% else %}
+          <li class="navbar_li"><a href="/login" class="{% block nav_login %}{% endblock %} navbar_a">Login</a></li>
+        {% endif %}
     </ul>    
 </nav>
 

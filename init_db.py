@@ -10,7 +10,7 @@ def init_tables():
     with open(SCHEME_FNAME) as f:
         connection.executescript(f.read())
 
-    cur = connection.cursor()
+    #cur = connection.cursor()
 
     connection.commit()
     connection.close()
@@ -22,3 +22,4 @@ def get_db_connection():
 
 if __name__ == "__main__":
     init_tables()
+

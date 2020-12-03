@@ -1,4 +1,8 @@
-from flask import Blueprint, Flask, render_template, request, Response
+
+import hashlib
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
+from flask import Blueprint, Flask, render_template, request, Response, redirect, url_for, flash
 import sqlite3
 from init_db import *
 import os
@@ -8,12 +12,106 @@ from matplotlib.ticker import MaxNLocator
 import pandas as pd
 import collections
 import io
+
 app = Flask(__name__)
 
-NUM_QUESTIONS = 50
+# Secret key of random bytes (used for sessions and user login implementation)
+# Generated randomly each time the app is run
+app.secret_key = os.urandom(16)
 
-conn = init_tables()
+# Flask SQL Alchemy Setup
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SECRET_KEY'] = 'secretkey'
+db = SQLAlchemy(app)
+db.create_all()
 
+# Init Myers Briggs results database
+init_tables()
+
+# Initialize Login Manager
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+# This injects whatever variables are in the dictionary
+# into all templates
+@app.context_processor
+def injectVars():
+    return dict(user=current_user)
+
+
+# Potential TODO: Get the submissions stuff set up on SQL alchemy for
+# consistency and easy of use throughout the program
+class User(UserMixin, db.Model):
+    '''
+    Class to represent the users table in users.db
+    2 Attributes, an id (primary key) and a username
+    '''
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(30), unique=True)
+    password = db.Column(db.String(32))
+    salt = db.Column(db.Integer)
+
+
+@app.route("/new_user", methods=["GET", "POST"])
+def new_user():
+    if request.method == "POST":
+        db_query = User.query.filter_by(username=request.form.get("username")).first()
+
+        if db_query is None:
+
+            # Create new user
+            # Generate salt for storing passwords in the database
+            uname = request.form.get("username")
+            salt = os.urandom(32)
+            hash_pass = hashlib.pbkdf2_hmac('sha256', request.form.get("password").encode('utf-8'), salt, 100000)
+            db.session.add(User(username=uname, password=hash_pass, salt=salt))
+            db.session.commit()
+
+            return redirect(url_for('login'))
+        else:
+            return render_template("new_user.html", error="Username already in use!")
+
+    return render_template("new_user.html")
+
+
+@login_manager.user_loader
+def load_user(userid: int):
+    return User.query.get(userid)
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+
+    if request.method == "POST":
+        user = User.query.filter_by(username=request.form.get("username")).first()
+        password = request.form.get("password")
+
+        if user is not None:
+
+            # Compute hash from the form's password and compare to stored hash
+            new_hash_pass = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), user.salt, 100000)
+
+            # Login if hashes match
+            if new_hash_pass == user.password:
+                login_user(user)
+                return render_template("login.html")
+
+        return render_template("login.html", error="Incorrect Username or Password")
+
+    return render_template("login.html")
+
+
+@app.route('/logout')
+def logout():
+    if current_user.is_authenticated:
+        tmp_user = current_user.username
+        logout_user()
+        return render_template("logout.html", user=tmp_user)
+
+    # Else we redirect to login, bc they cant logout if never logged in
+    return redirect(url_for('login'))
 
 
 @app.route('/summary_plot.png')
@@ -167,11 +265,12 @@ def update_trait_graph():
 def home():
     return render_template("index.html")
 
-
+NUM_QUESTIONS = 50
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     try:
         if request.method == "POST":
+            # This is when the submit button is pushed, user is authenticated already
             # Do calcs on answers starting here
             answers = []
             for answer in range (1, NUM_QUESTIONS+1):
@@ -183,6 +282,7 @@ def quiz():
 
             # Calculate sums for each trait
             result = {
+                "userID": None,
                 "sumE": 0,
                 "sumI": 0,
                 "sumS": 0,
@@ -230,15 +330,35 @@ def quiz():
             else:
                 result["personalityType"] += "J"
 
+            # Check if there is a user logged in
+            # If so we get their username and insert that into
+            # the submission in the database, else we simply
+            # insert None (which will display as anonymous on
+            # the data page)
+            if not current_user.is_authenticated:
+                u_id = None
+            else:
+                u_id = current_user.username
+                result["username"] = u_id
+
             # Send to database
             conn = get_db_connection()
-            conn.execute("INSERT INTO submissions (sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
+            prev_submission = conn.execute("SELECT * FROM submissions WHERE userID=\"{}\";".format(current_user.username)).fetchall()
+            if prev_submission != []:
+                conn.execute("DELETE FROM submissions WHERE userID=\"{}\";".format(current_user.username))
+            conn.execute("INSERT INTO submissions (userID, sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, personalityType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                        (u_id, result["sumE"], result["sumI"], result["sumS"], result["sumN"], result["sumT"], result["sumF"], result["sumJ"], result["sumP"], result["personalityType"]))
             conn.commit()
             conn.close()
-            return render_template("results.html", user_result=result)
+            return redirect(url_for('results'))
         else:
-            return render_template("quiz.html")
+            # This handles the GET request when a user first tries to get to the page
+            # Here we send them to the login page if they are not authenticated (logged in)
+            if current_user.is_authenticated:
+                return render_template("quiz.html")
+            else:
+                flash('You must be logged in before taking the personality quiz!')
+                return redirect(url_for('login'))
     except Exception as e:
         print("error:", e)
         return render_template("quiz.html", error="something")
@@ -277,7 +397,18 @@ def data():
     conn = get_db_connection()
     posts = conn.execute('SELECT * FROM submissions').fetchall()
     conn.close()
-    return render_template("data.html", posts=posts)
+    print(posts)
+
+    if current_user.is_authenticated:
+        conn = get_db_connection()
+        posts = conn.execute("SELECT * FROM submissions WHERE userID=\"{}\";".format(current_user.username)).fetchall()
+        conn.close()
+
+        # Check if the current user has a submission. If so, display on data page as well.
+        if posts != []:
+            return render_template("data.html", posts=posts, user_result=posts[0])
+
+    return render_template("data.html", posts=posts, user_result={})
 
 @app.route("/personalities/<p_type>")
 def personalities(p_type=""):

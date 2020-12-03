@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+{% block nav_login %}active{% endblock %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+<p>{{ message }}</p>
+{% endfor %}
+
+{% if user.is_authenticated: %}
+
+<p style="text-align: center; font-size: x-large;"> You are logged in as <b>{{ user.username }}</b>!</p>
+
+{% else %}
+
+<h3> {{ error }} </h3>
+
+<form name="login" autocomplete="off" method="POST">
+
+  <h3>Username</h3>
+  <input name="username" type="text" required>
+  <h3>Password</h3>
+  <input name="password" type="password" required autocomplete="off"><br><br>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<a href="/new_user" class="{% block nav_new_user %}{% endblock %}">Need an account?</a>
+
+{% endif %}
+
+{% endblock content %}

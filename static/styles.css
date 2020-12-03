@@ -16,6 +16,7 @@ body {
 
 .body_wrapper {
   padding: 20px 15px;
+  font-family: var(--fonts);
 }
 
 h1 {
@@ -159,7 +160,6 @@ div.dropdown {
   justify-content: center;
 }
 
-
 /* Personality Grids */
 .wrapper {
   display: grid;
@@ -284,12 +284,12 @@ form {
 
 /* Style the indicator (dot/circle) */
 .part-1-radio-container .radiobutt:after {
-     top: 6px;
-    left: 6px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
 }
 
 /* For the Quiz page part 2 */
@@ -399,4 +399,33 @@ form {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.center-image {
+  max-height: 600px;
+  padding: 10px;
+}
+
+.results-wrapper {
+  display: grid;
+  grid-template-columns: 200px 40px 200px;
+  background-color: var(--bg);
+  justify-content: center;
+}
+
+#results-item-left {
+  text-align: right;
+  /* padding: 10px; */
+}
+
+#results-item-right {
+  text-align: left;
+  /* padding: 10px; */
+}
+
+#mbti-chart {
+  /* max-width: 60%;
+  min-width: 50%; */
+  width: 50%;
+  max-height: 100%;
 }
