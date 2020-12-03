@@ -57,19 +57,33 @@ class User(UserMixin, db.Model):
 @app.route("/new_user", methods=["GET", "POST"])
 def new_user():
     if request.method == "POST":
-        db_query = User.query.filter_by(username=request.form.get("username")).first()
+
+        # Verify that the username is not already in use
+        # Display an error if the username is already in use
+        uname = request.form.get("username")
+        db_query = User.query.filter_by(username=uname).first()
 
         if db_query is None:
 
-            # Create new user
-            # Generate salt for storing passwords in the database
-            uname = request.form.get("username")
-            salt = os.urandom(32)
-            hash_pass = hashlib.pbkdf2_hmac('sha256', request.form.get("password").encode('utf-8'), salt, 100000)
-            db.session.add(User(username=uname, password=hash_pass, salt=salt))
-            db.session.commit()
+            # Verify that the passwords match
+            if request.form.get("password") == request.form.get("confirm-password"):
 
-            return redirect(url_for('login'))
+                # Create new user
+                # Generate salt for storing passwords in the database
+                salt = os.urandom(32)
+                hash_pass = hashlib.pbkdf2_hmac('sha256', request.form.get("password").encode('utf-8'), salt, 100000)
+                user = User(username=uname, password=hash_pass, salt=salt)
+                db.session.add(user)
+                db.session.commit()
+
+                # Login the newly created user
+                login_user(user)
+
+                # Redirect to the login page
+                # Display a message for the currently logged in user
+                return redirect(url_for('login'))
+            else:
+                return render_template("new_user.html", error="Passwords do not match!")
         else:
             return render_template("new_user.html", error="Username already in use!")
 
