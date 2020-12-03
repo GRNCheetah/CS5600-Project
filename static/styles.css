@@ -401,7 +401,31 @@ form {
   transform: rotate(45deg);
 }
 
-.home-image {
+.center-image {
   max-height: 600px;
   padding: 10px;
+}
+
+.results-wrapper {
+  display: grid;
+  grid-template-columns: 200px 40px 200px;
+  background-color: var(--bg);
+  justify-content: center;
+}
+
+#results-item-left {
+  text-align: right;
+  /* padding: 10px; */
+}
+
+#results-item-right {
+  text-align: left;
+  /* padding: 10px; */
+}
+
+#mbti-chart {
+  /* max-width: 60%;
+  min-width: 50%; */
+  width: 50%;
+  max-height: 100%;
 }

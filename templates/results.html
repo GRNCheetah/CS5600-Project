@@ -10,6 +10,23 @@
 <h2 style="text-align: center;"> Personality Type: <a style="text-decoration: none;" href="personalities/{{ user_result['personalityType'].lower()}}">{{ user_result['personalityType'] }}</a></h2>
 <br>
 <div style="text-align: center;">
+    <div class="results-wrapper">
+        <p id="results-item-left">{{ percentages[0] }}% Extroverted</p>
+        <p>-</p>
+        <p id="results-item-right">{{ percentages[1] }}% Introverted</p>
+        <p id="results-item-left">{{ percentages[2] }}% Sensor</p>
+        <p>-</p>
+        <p id="results-item-right">{{ percentages[3] }}% Intuitive</p>
+        <p id="results-item-left">{{ percentages[4] }}% Thinker</p>
+        <p>-</p>
+        <p id="results-item-right">{{ percentages[5] }}% Feeler</p>
+        <p id="results-item-left">{{ percentages[6] }}% Judger</p>
+        <p>-</p>
+        <p id="results-item-right">{{ percentages[7] }}% Perceiver</p>
+    </div>
+</div>
+<br>
+<div style="text-align: center;">
     <p>You scored <b>{{ user_result['sumE'] }}</b> points in the <b>Extrovert</b> category.</p>
     <p>You scored <b>{{ user_result['sumI'] }}</b> points in the <b>Introvert</b> category.</p>
     <p>You scored <b>{{ user_result['sumS'] }}</b> points in the <b>Sensor</b> category.</p>
@@ -18,6 +35,20 @@
     <p>You scored <b>{{ user_result['sumF'] }}</b> points in the <b>Feeler</b> category.</p>
     <p>You scored <b>{{ user_result['sumJ'] }}</b> points in the <b>Judger</b> category.</p>
     <p>You scored <b>{{ user_result['sumP'] }}</b> points in the <b>Perceiver</b> category.</p>
+</div>
+
+<br><br>
+<div class="center">
+    <h3>Where do you fall in the pop culture MBTI charts?</h3>
+    <img class="center-image" id="mbti-chart" src="../static/cat-mbti-chart.jpg" alt="Pusheen Cat MBTI Chart" />
+    <br>
+    <img class="center-image" id="mbti-chart" src="../static/got-mbti-chart.png" alt="Game of Thrones MBTI Chart" />
+    <br>
+    <img class="center-image" id="mbti-chart" src="../static/lotr-mbti-chart.jpg" alt="Lord of the Rings MBTI Chart" />
+    <br>
+    <img class="center-image" id="mbti-chart" src="../static/sw-mbti-chart.jpg" alt="Star Wars MBTI Chart" />
+    <br>
+    <img class="center-image" id="mbti-chart" src="../static/hp-mbti-chart.png" alt="Harry Potter MBTI Chart" />
 </div>
 {% else %}
 
