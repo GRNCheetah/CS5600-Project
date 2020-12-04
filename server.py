@@ -23,7 +23,6 @@ app.secret_key = os.urandom(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SECRET_KEY'] = 'secretkey'
 db = SQLAlchemy(app)
-db.create_all()
 
 # Init Myers Briggs results database
 init_tables()
