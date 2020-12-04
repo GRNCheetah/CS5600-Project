@@ -23,7 +23,6 @@ app.secret_key = os.urandom(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SECRET_KEY'] = 'secretkey'
 db = SQLAlchemy(app)
-db.create_all()
 
 # Init Myers Briggs results database
 init_tables()
@@ -450,5 +449,7 @@ def personalities(p_type=""):
     else:
         return render_template("personalities.html")
 
+
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug=True)
