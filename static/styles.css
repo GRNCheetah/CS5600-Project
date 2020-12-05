@@ -429,3 +429,31 @@ form {
   width: 50%;
   max-height: 100%;
 }
+
+.great-person {
+  text-decoration: none;
+}
+
+/* .great-person a:visited {
+  color: var(--font_col);
+} */
+
+/* unvisited link */
+a.great-person:link {
+  color: var(--font_col);
+}
+
+/* visited link */
+a.great-person:visited {
+  color: var(--font_col);
+}
+
+/* mouse over link */
+a.great-person:hover {
+  color: var(--font_col);
+}
+
+/* selected link */
+a.great-person:active {
+  color: var(--font_col);
+}

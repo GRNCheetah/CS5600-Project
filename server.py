@@ -443,9 +443,26 @@ def personalities(p_type=""):
             'istp': ('The Craftsperson', 'Tolerant and flexible, quiet observers until a problem appears, then act quickly to find workable solutions. Analyze what makes things work and readily get through large amounts of data to isolate the core of practical problems. Interested in cause and effect, organize facts using logical principles, value efficiency.'), 
             'esfp': ('The Entertainer', 'Outgoing, friendly, and accepting. Exuberant lovers of life, people, and material comforts. Enjoy working with others to make things happen. Bring common sense and a realistic approach to their work, and make work fun. Flexible and spontaneous, adapt readily to new people and environments. Learn best by trying a new skill with other people.'), 
             'isfp': ('The Composer', 'Quiet, friendly, sensitive, and kind. Enjoy the present moment, what\'s going on around them. Like to have their own space and to work within their own time frame. Loyal and committed to their values and to people who are important to them. Dislike disagreements and conflicts, do not force their opinions or values on others.')}
+    PEOPLE = {'entj': ('Julius Caesar', 'entj-julius-caesar.jpg', 'https://en.wikipedia.org/wiki/Julius_Caesar'),
+              'intj': ('Nikola Tesla', 'intj-nikola-tesla.jpg', 'https://en.wikipedia.org/wiki/Nikola_Tesla'),
+              'entp': ('Catherine The Great', 'entp-catherine-the-great.jpg', 'https://en.wikipedia.org/wiki/Catherine_the_Great'),
+              'intp': ('Dwight D. Eisenhower', 'intp-dwight-d-eisenhower.jpg', 'https://en.wikipedia.org/wiki/Dwight_D._Eisenhower'),
+              'enfj': ('Neil DeGrasse Tyson', 'enfj-neil-degrasse-tyson.jpg', 'https://en.wikipedia.org/wiki/Neil_deGrasse_Tyson'),
+              'infj': ('Plato', 'infj-plato.jpg', 'https://en.wikipedia.org/wiki/Plato'),
+              'enfp': ('Anne Frank', 'enfp-anne-frank.jpg', 'https://en.wikipedia.org/wiki/Anne_Frank'),
+              'infp': ('William Shakespeare', 'infp-william-shakespeare.jpg', 'https://en.wikipedia.org/wiki/William_Shakespeare'),
+              'estj': ('Dr. Phil', 'estj-phil-mcgraw.jpg', 'https://en.wikipedia.org/wiki/Phil_McGraw'),
+              'istj': ('Ayaan Hirsi Ali', 'istj-ayaan-hirsi-ali.jpg', 'https://en.wikipedia.org/wiki/Ayaan_Hirsi_Ali'),
+              'esfj': ('Harry S. Truman', 'esfj-harry-s-truman.jpg', 'https://en.wikipedia.org/wiki/Harry_S._Truman'),
+              'isfj': ('Rosa Parks', 'isfj-rosa-parks.jpg', 'https://en.wikipedia.org/wiki/Rosa_Parks'),
+              'estp': ('Theodore Roosevelt', 'estp-theodore-roosevelt.jpg', 'https://en.wikipedia.org/wiki/Theodore_Roosevelt'),
+              'istp': ('Steve Jobs', 'istp-steve-jobs.jpg', 'https://en.wikipedia.org/wiki/Steve_Jobs'),
+              'esfp': ('Hugh Hefner', 'esfp-hugh-hefner.jpg', 'https://en.wikipedia.org/wiki/Hugh_Hefner'),
+              'isfp': ('Princess Diana', 'isfp-princess-diana.jpg', 'https://en.wikipedia.org/wiki/Diana,_Princess_of_Wales')}
+    
     print(p_type)
     if p_type in TYPES:
-        return render_template("types.html", p_type=p_type.upper(), info=INFO[p_type])
+        return render_template("types.html", p_type=p_type.upper(), info=INFO[p_type], person=PEOPLE[p_type])
     else:
         return render_template("personalities.html")
 
