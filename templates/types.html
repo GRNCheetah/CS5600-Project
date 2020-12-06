@@ -40,7 +40,10 @@
     {% endif %}
     </li>
 </ul>
-
+<div class="center">
+    <a href="{{ person[2] }}"><img src="{{ '../static/' + person[1] }}" alt="{{ person[0] }}" /></a>
+    <a class="great-person" href="{{ person[2] }}"><h3>{{ person[0] }}</h3></a>
+</div>
 <a href="/personalities/main">To Personalities page</a>
 
 {% endblock %}
