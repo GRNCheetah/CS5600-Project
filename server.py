@@ -291,7 +291,6 @@ def quiz():
                     answers = answers + (request.form.getlist(str(answer)))
                 else:
                     answers.append(request.form[str(answer)])
-            print(answers, flush=True)
 
             # Calculate sums for each trait
             result = {
@@ -323,8 +322,6 @@ def quiz():
                     result["sumJ"] += int(answer[-1])
                 elif answer[0] == 'P':
                     result["sumP"] += int(answer[-1])
-            #print('Sums are: ', sumE, sumI, sumS, sumN, sumT, sumF, sumJ, sumP, flush=True)
-
 
             if(result["sumI"] >= result["sumE"]):
                 result["personalityType"] += "I"
@@ -410,7 +407,6 @@ def data():
     conn = get_db_connection()
     posts = conn.execute('SELECT * FROM submissions').fetchall()
     conn.close()
-    print(posts)
 
     if current_user.is_authenticated:
         conn = get_db_connection()
@@ -460,7 +456,6 @@ def personalities(p_type=""):
               'esfp': ('Hugh Hefner', 'esfp-hugh-hefner.jpg', 'https://en.wikipedia.org/wiki/Hugh_Hefner'),
               'isfp': ('Princess Diana', 'isfp-princess-diana.jpg', 'https://en.wikipedia.org/wiki/Diana,_Princess_of_Wales')}
     
-    print(p_type)
     if p_type in TYPES:
         return render_template("types.html", p_type=p_type.upper(), info=INFO[p_type], person=PEOPLE[p_type])
     else:
