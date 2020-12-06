@@ -88,6 +88,10 @@ div.dropdown {
   background-color: var(--nav_hover_col);
 }
 
+.navbar_right {
+  float: right;
+}
+
 .active {
   background-color: var(--nav_active_col);
 }
